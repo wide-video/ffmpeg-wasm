@@ -36,7 +36,7 @@ source ./modules/emsdk/emsdk_env.sh
 ```
 git submodule add -f https://github.com/emscripten-core/emsdk.git modules/emsdk
 git submodule add -f -b yscene https://github.com/jozefchutka/fdk-aac modules/fdk-aac
-git submodule add -f -b yscene-0.0.3 https://github.com/jozefchutka/ffmpeg.wasm-core modules/ffmpeg
+git submodule add -f -b yscene/new https://github.com/jozefchutka/ffmpeg.wasm-core modules/ffmpeg
 git submodule add -f -b yscene https://github.com/jozefchutka/lame modules/lame
 git submodule add -f -b yscene https://github.com/jozefchutka/libsamplerate modules/libsamplerate
 git submodule add -f -b yscene https://github.com/jozefchutka/libsndfile modules/libsndfile
