@@ -1,6 +1,5 @@
 # yscene-ffmpeg
 
-
 ## Build
 
 ```
@@ -21,7 +20,16 @@ source ./modules/emsdk/emsdk_env.sh
 
 ### Artifacts 
 
-- `build/wasm`
+```
+./build/wasm
+```
+
+## Updating
+
+1. On https://github.com/jozefchutka/ffmpeg create branch names *yscene/new* based on branch/tag/latest from ffmpeg origin
+2. Merge *yscene/init* into *yscene/new*
+3. On https://github.com/jozefchutka/yscene-ffmpeg update `.gitmodules` to use *yscene/new*
+4. clean and build
 
 ## Misc
 
