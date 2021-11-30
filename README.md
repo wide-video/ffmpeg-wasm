@@ -9,10 +9,6 @@ sudo -s
 ./scripts/build.sh
 ```
 
-### Artifacts 
-
-- `build/wasm`
-
 ### Single Steps
 
 ```
@@ -22,6 +18,10 @@ source ./modules/emsdk/emsdk_env.sh
 ./scripts/configure-ffmpeg.sh
 ./scripts/build-ffmpeg.sh
 ```
+
+### Artifacts 
+
+- `build/wasm`
 
 ## Misc
 
