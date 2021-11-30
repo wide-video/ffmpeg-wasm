@@ -1,80 +1,80 @@
 [submodule "modules/emsdk"]
 	path = modules/emsdk
 	url = https://github.com/emscripten-core/emsdk.git
-    branch = main
-    ignore = all
+	branch = main
+	ignore = all
 [submodule "modules/fdk-aac"]
 	path = modules/fdk-aac
 	url = https://github.com/jozefchutka/fdk-aac
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/ffmpeg"]
 	path = modules/ffmpeg
-	url = https://github.com/jozefchutka/ffmpeg
+	url = https://github.com/jozefchutka/ffmpeg.wasm-core
 	branch = yscene-0.0.3
-    ignore = all
+	ignore = all
 [submodule "modules/lame"]
 	path = modules/lame
 	url = https://github.com/jozefchutka/lame
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/libsamplerate"]
 	path = modules/libsamplerate
 	url = https://github.com/jozefchutka/libsamplerate
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/libsndfile"]
 	path = modules/libsndfile
 	url = https://github.com/jozefchutka/libsndfile
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/libvpx"]
 	path = modules/libvpx
 	url = https://github.com/jozefchutka/libvpx
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/libwebp"]
 	path = modules/libwebp
 	url = https://github.com/jozefchutka/libwebp
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/Ogg"]
 	path = modules/Ogg
 	url = https://github.com/jozefchutka/Ogg
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/opus"]
 	path = modules/opus
 	url = https://github.com/jozefchutka/opus
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/rubberband"]
 	path = modules/rubberband
 	url = https://github.com/jozefchutka/rubberband
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/theora"]
 	path = modules/theora
 	url = https://github.com/jozefchutka/theora
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/vorbis"]
 	path = modules/vorbis
 	url = https://github.com/jozefchutka/vorbis
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/x264"]
 	path = modules/x264
 	url = https://github.com/jozefchutka/x264
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/x265"]
 	path = modules/x265
 	url = https://github.com/jozefchutka/x265
 	branch = yscene
-    ignore = all
+	ignore = all
 [submodule "modules/zlib"]
 	path = modules/zlib
 	url = https://github.com/jozefchutka/zlib
 	branch = yscene
-    ignore = all
+	ignore = all
