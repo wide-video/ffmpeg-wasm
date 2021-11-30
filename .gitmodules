@@ -11,7 +11,7 @@
 [submodule "modules/ffmpeg"]
 	path = modules/ffmpeg
 	url = https://github.com/jozefchutka/ffmpeg.wasm-core
-	branch = yscene-0.0.3
+	branch = yscene-new
 	ignore = all
 [submodule "modules/lame"]
 	path = modules/lame
