@@ -5,7 +5,7 @@ source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
 WASM_DIR=$ROOT_DIR/build/wasm
-mkdir -p WASM_DIR
+mkdir -p $WASM_DIR
 
 FLAGS=(
   -I. -I./fftools -I$BUILD_DIR/include
