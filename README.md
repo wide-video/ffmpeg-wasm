@@ -11,6 +11,7 @@ sudo -s
 ### Single Steps
 
 ```
+sudo -s
 ./scripts/init-dependencies.sh
 source ./modules/emsdk/emsdk_env.sh
 ./scripts/build-zlib.sh
