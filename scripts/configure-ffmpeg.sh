@@ -14,6 +14,7 @@ FLAGS=(
   --enable-libvpx         # enable libvpx / webm
   --enable-libmp3lame     # enable libmp3lame
   --enable-libfdk-aac     # enable libfdk-aac
+  --enable-libflite       # enable libflite
   --enable-libtheora      # enable libtheora
   --enable-libvorbis      # enable libvorbis
   --enable-libopus        # enable opus
