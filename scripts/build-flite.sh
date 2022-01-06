@@ -12,6 +12,9 @@ CONF_FLAGS=(
 )
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 
+mkdir -p $BUILD_DIR/include/flite
+mkdir -p $BUILD_DIR/lib/pkgconfig
+
 (cd $LIB_PATH && \
   CFLAGS=$CFLAGS emconfigure ./configure "${CONF_FLAGS[@]}" && \
   emmake make clean && \
@@ -19,5 +22,4 @@ echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 
 cp $LIB_PATH/build/i386-gnu/lib/* $BUILD_DIR/lib
 cp $LIB_PATH/flite.pc $BUILD_DIR/lib/pkgconfig
-mkdir -p $BUILD_DIR/include/flite
 cp $LIB_PATH/include/* $BUILD_DIR/include/flite
