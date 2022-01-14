@@ -25,11 +25,11 @@ FLAGS=(
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
   -s ENVIRONMENT=worker
-  -msimd128
-  $OPTIM_FLAGS
-  -pthread
   -s USE_PTHREADS=1                             # enable pthreads support
   -s PROXY_TO_PTHREAD=1                         # detach main() from browser/UI main thread
+  -msimd128
+  -pthread
+  $OPTIM_FLAGS
   -o $WASM_DIR/ffmpeg.js
 )
 echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
