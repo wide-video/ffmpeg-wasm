@@ -78,7 +78,3 @@
 	url = https://github.com/jozefchutka/zlib
 	branch = yscene
 	ignore = all
-[submodule "modules/flite"]
-	path = modules/flite
-	url = https://github.com/jozefchutka/flite
-	branch = yscene
