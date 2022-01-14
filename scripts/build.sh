@@ -12,7 +12,6 @@ emcc -v
 
 $SCRIPT_ROOT/build-zlib.sh
 $SCRIPT_ROOT/build-fdk-aac.sh
-$SCRIPT_ROOT/build-flite.sh
 $SCRIPT_ROOT/build-lame.sh
 $SCRIPT_ROOT/build-libvpx.sh
 $SCRIPT_ROOT/build-libwebp.sh
