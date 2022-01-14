@@ -25,7 +25,6 @@ FLAGS=(
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
   -s ENVIRONMENT=worker
-  --pre-js $ROOT_DIR/src/pre.js
   -msimd128
   $OPTIM_FLAGS
   -pthread
