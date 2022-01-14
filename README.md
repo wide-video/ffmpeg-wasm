@@ -27,17 +27,18 @@ source ./modules/emsdk/emsdk_env.sh
 
 ## Updating
 
-1. On https://github.com/jozefchutka/ffmpeg create branch named *yscene/1.2.3* based on branch/tag/latest from ffmpeg origin
-2. Merge *yscene/init* into *yscene/1.2.3*
-3. On https://github.com/jozefchutka/yscene-ffmpeg update `.gitmodules` to use *yscene/1.2.3*
-4. clean and build
+1. On *ffmpeg* repo create branch named *yscene-tmp* based on latest from ffmpeg origin
+2. Merge *yscene-init* into *yscene-tmp*
+3. update *yscene-ffmpeg/.gitmodules* to use *yscene-tmp* branch
+4. clean, build test it with yscene
+5. override `yscene` by `yscene-new` (delete it) and create tag i.e. `y1.2.3`
 
 ## Misc
 
 ```
 git submodule add -f -b main https://github.com/emscripten-core/emsdk.git modules/emsdk
 git submodule add -f -b yscene https://github.com/jozefchutka/fdk-aac modules/fdk-aac
-git submodule add -f -b yscene/1.2.3 https://github.com/jozefchutka/ffmpeg.wasm-core modules/ffmpeg
+git submodule add -f -b yscene https://github.com/jozefchutka/ffmpeg modules/ffmpeg
 git submodule add -f -b yscene https://github.com/jozefchutka/lame modules/lame
 git submodule add -f -b yscene https://github.com/jozefchutka/libsamplerate modules/libsamplerate
 git submodule add -f -b yscene https://github.com/jozefchutka/libsndfile modules/libsndfile

@@ -10,8 +10,8 @@
 	ignore = all
 [submodule "modules/ffmpeg"]
 	path = modules/ffmpeg
-	url = https://github.com/jozefchutka/ffmpeg.wasm-core
-	branch = yscene/0.1.1
+	url = https://github.com/jozefchutka/ffmpeg
+	branch = yscene
 	ignore = all
 [submodule "modules/lame"]
 	path = modules/lame
