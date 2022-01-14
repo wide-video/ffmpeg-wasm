@@ -20,13 +20,12 @@ FLAGS=(
   -s MODULARIZE=1                               # use modularized version to be more flexible
   -s EXPORT_NAME="createFFmpeg"             # assign export name for browser
   -s EXPORTED_FUNCTIONS="[_main, ___wasm_init_memory_flag]"
-  -s EXPORTED_RUNTIME_METHODS="[callMain, FS]"
+  -s EXPORTED_RUNTIME_METHODS="[callMain, FS, WORKERFS]"
   -s INITIAL_MEMORY=268435456                   # 64 KB * 1024 * 16 * 2047 = 2146435072 bytes ~= 2 GB, 134217728 = 128 MB
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
   -s ENVIRONMENT=worker
   --pre-js $ROOT_DIR/src/pre.js
-  --post-js $ROOT_DIR/src/post.js
   -msimd128
   $OPTIM_FLAGS
   -pthread
