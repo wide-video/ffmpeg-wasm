@@ -40,4 +40,8 @@ echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 gzip --force -9 -c $WASM_DIR/ffmpeg.wasm > $WASM_DIR/ffmpeg.wasm.gz
 rm $WASM_DIR/ffmpeg.wasm
 
-git submodule foreach 'git config --get remote.origin.url && git rev-parse HEAD && echo ""' > $WASM_DIR/info.txt
+git config --get remote.origin.url > $WASM_DIR/info.txt
+git rev-parse HEAD >> $WASM_DIR/info.txt
+echo "" >> $WASM_DIR/info.txt
+
+git submodule foreach 'git config --get remote.origin.url && git rev-parse HEAD && echo ""' >> $WASM_DIR/info.txt
