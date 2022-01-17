@@ -5,6 +5,8 @@ source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
 WASM_DIR=$ROOT_DIR/build/wasm
+INFO_FILE=$WASM_DIR/info.txt
+
 mkdir -p $WASM_DIR
 
 FLAGS=(
@@ -40,8 +42,12 @@ echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 gzip --force -9 -c $WASM_DIR/ffmpeg.wasm > $WASM_DIR/ffmpeg.wasm.gz
 rm $WASM_DIR/ffmpeg.wasm
 
-git config --get remote.origin.url > $WASM_DIR/info.txt
-git rev-parse HEAD >> $WASM_DIR/info.txt
-echo "" >> $WASM_DIR/info.txt
+git config --get remote.origin.url > $INFO_FILE
+git rev-parse HEAD >> $INFO_FILE
+echo "" >> $INFO_FILE
 
-git submodule foreach 'git config --get remote.origin.url && git rev-parse HEAD && echo ""' >> $WASM_DIR/info.txt
+echo "EMCC (emcc -v)" >> $INFO_FILE
+emcc -v &>> $INFO_FILE
+echo "" >> $INFO_FILE
+
+git submodule foreach 'git config --get remote.origin.url && git rev-parse HEAD && echo ""' >> $INFO_FILE
