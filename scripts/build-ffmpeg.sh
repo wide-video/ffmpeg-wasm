@@ -20,10 +20,10 @@ FLAGS=(
   -s INVOKE_RUN=0                               # not to run the main() in the beginning
   -s EXIT_RUNTIME=1                             # exit runtime after execution
   -s MODULARIZE=1                               # use modularized version to be more flexible
-  -s EXPORT_NAME="createFFmpeg"             # assign export name for browser
+  -s EXPORT_NAME="createFFmpeg"
   -s EXPORTED_FUNCTIONS="[_main, ___wasm_init_memory_flag]"
   -s EXPORTED_RUNTIME_METHODS="[callMain, FS, WORKERFS]"
-  -s INITIAL_MEMORY=268435456                   # 64 KB * 1024 * 16 * 2047 = 2146435072 bytes ~= 2 GB, 134217728 = 128 MB
+  -s INITIAL_MEMORY=128mb
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
   -s ENVIRONMENT=worker
