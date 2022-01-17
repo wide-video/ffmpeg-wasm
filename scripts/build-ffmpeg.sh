@@ -42,7 +42,10 @@ echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 gzip --force -9 -c $WASM_DIR/ffmpeg.wasm > $WASM_DIR/ffmpeg.wasm.gz
 rm $WASM_DIR/ffmpeg.wasm
 
-git config --get remote.origin.url > $INFO_FILE
+echo "emcc ${FLAGS[@]}" > $INFO_FILE
+echo "" >> $INFO_FILE
+
+git config --get remote.origin.url >> $INFO_FILE
 git rev-parse HEAD >> $INFO_FILE
 echo "" >> $INFO_FILE
 
