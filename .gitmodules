@@ -3,11 +3,6 @@
 	url = https://github.com/emscripten-core/emsdk.git
 	branch = main
 	ignore = all
-[submodule "modules/fdk-aac"]
-	path = modules/fdk-aac
-	url = https://github.com/jozefchutka/fdk-aac
-	branch = yscene
-	ignore = all
 [submodule "modules/ffmpeg"]
 	path = modules/ffmpeg
 	url = https://github.com/jozefchutka/ffmpeg

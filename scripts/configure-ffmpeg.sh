@@ -7,18 +7,17 @@ LIB_PATH=modules/ffmpeg
 FLAGS=(
   "${FFMPEG_CONFIG_FLAGS_BASE[@]}"
   --enable-gpl            # required by x264
-  --enable-nonfree        # required by fdk-aac
-  --enable-zlib           # enable zlib
-  --enable-libx264        # enable x264
-  --enable-libx265        # enable x265
-  --enable-libvpx         # enable libvpx / webm
-  --enable-libmp3lame     # enable libmp3lame
-  --enable-libfdk-aac     # enable libfdk-aac
-  --enable-libtheora      # enable libtheora
-  --enable-libvorbis      # enable libvorbis
-  --enable-libopus        # enable opus
-  --enable-libwebp        # enable libwebp
-  --enable-librubberband  # enable librubberband
+  --enable-version3
+  --enable-zlib
+  --enable-libx264
+  --enable-libx265
+  --enable-libvpx
+  --enable-libmp3lame
+  --enable-libtheora
+  --enable-libvorbis
+  --enable-libopus
+  --enable-libwebp
+  --enable-librubberband
 )
 echo "FFMPEG_CONFIG_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
