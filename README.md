@@ -53,3 +53,9 @@ git submodule add -f -b yscene https://github.com/jozefchutka/x264 modules/x264
 git submodule add -f -b yscene https://github.com/jozefchutka/x265 modules/x265
 git submodule add -f -b yscene https://github.com/jozefchutka/zlib modules/zlib
 ```
+
+
+## Issues
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 467B942D3A79BD29
+https://github.com/hashicorp/consul/issues/11162
