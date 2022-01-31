@@ -10,6 +10,7 @@ INFO_FILE=$WASM_DIR/info.txt
 mkdir -p $WASM_DIR
 
 FLAGS=(
+  $CFLAGS
   -I. -I./fftools -I$BUILD_DIR/include
   -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibpostproc -Llibswscale -Llibswresample -Lrubberband -Lsamplerate -Lflite -L$BUILD_DIR/lib
   -Wno-deprecated-declarations -Wno-pointer-sign -Wno-implicit-int-float-conversion -Wno-switch -Wno-parentheses -Qunused-arguments
@@ -27,11 +28,8 @@ FLAGS=(
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
   -s ENVIRONMENT=worker
-  -s USE_PTHREADS=1
   -s PROXY_TO_PTHREAD=1
-  -msimd128
   -pthread
-  $OPTIM_FLAGS
   -o $WASM_DIR/ffmpeg.js
 )
 echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"

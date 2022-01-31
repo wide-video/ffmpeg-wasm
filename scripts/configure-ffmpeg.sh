@@ -5,7 +5,9 @@ source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
 FLAGS=(
-  "${FFMPEG_CONFIG_FLAGS_BASE[@]}"
+  --target-os=none        # use none to prevent any os specific configurations
+  --arch=x86_32           # use x86_32 to achieve minimal architectural optimization
+  --enable-cross-compile
   --enable-gpl            # required by x264
   --enable-version3
   --enable-zlib
@@ -18,6 +20,26 @@ FLAGS=(
   --enable-libopus
   --enable-libwebp
   --enable-librubberband
+  --disable-x86asm
+  --disable-inline-asm
+  --disable-stripping
+  --disable-programs      # disable programs build (incl. ffplay, ffprobe & ffmpeg)
+  --disable-doc
+  --disable-debug
+  --disable-runtime-cpudetect
+  --disable-autodetect    # disable external libraries auto detect
+  --extra-cflags="$CFLAGS"
+  --extra-cxxflags="$CFLAGS"
+  --extra-ldflags="$LDFLAGS"
+  --pkg-config-flags="--static"
+  --nm="llvm-nm"
+  --ar=emar
+  --ranlib=emranlib
+  --cc=emcc
+  --cxx=em++
+  --objcc=emcc
+  --dep-cc=emcc
+  ${EXTRA_FFMPEG_CONF_FLAGS-}
 )
 echo "FFMPEG_CONFIG_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
