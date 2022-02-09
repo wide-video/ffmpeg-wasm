@@ -25,11 +25,12 @@ source ./modules/emsdk/emsdk_env.sh
 
 # Updating
 
-1. On *ffmpeg* repo create branch named *wide.video-tmp* based on latest from ffmpeg origin
-2. Merge *wide.video-init* into *wide.video-tmp*
-3. update *ffmpeg-wasm/.gitmodules* to use *wide.video-tmp* branch
-4. clean, build test it with app
-5. override `wide.video` by `wide.video-tmp` (delete it) and create tag i.e. `wv1.2.3`
+1. On *ffmpeg* repo `git fetch --all`
+2. On *ffmpeg* repo create branch named *wide.video-tmp* based on latest from ffmpeg origin
+3. Merge *wide.video-init* into *wide.video-tmp*
+4. update *ffmpeg-wasm/.gitmodules* to use *wide.video-tmp* branch
+5. clean, build test it with app
+6. override `wide.video` by `wide.video-tmp` (delete it) and create tag i.e. `wv1.2.3`
 
 ## Misc
 
