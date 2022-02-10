@@ -40,6 +40,12 @@ echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 gzip --force -9 -c $WASM_DIR/ffmpeg.wasm > $WASM_DIR/ffmpeg.wasm.gz
 rm $WASM_DIR/ffmpeg.wasm
 
+gzip --force -9 -c $WASM_DIR/ffmpeg.js > $WASM_DIR/ffmpeg.js.gz
+rm $WASM_DIR/ffmpeg.js
+
+gzip --force -9 -c $WASM_DIR/ffmpeg.worker.js > $WASM_DIR/ffmpeg.worker.js.gz
+rm $WASM_DIR/ffmpeg.worker.js
+
 echo "emcc ${FLAGS[@]}" > $INFO_FILE
 echo "" >> $INFO_FILE
 
