@@ -36,25 +36,9 @@ source ./modules/emsdk/emsdk_env.sh
 
 ```
 git submodule add -f -b main https://github.com/emscripten-core/emsdk.git modules/emsdk
-git submodule add -f -b wide.video https://github.com/jozefchutka/fdk-aac modules/fdk-aac
-git submodule add -f -b wide.video https://github.com/jozefchutka/ffmpeg modules/ffmpeg
-git submodule add -f -b wide.video https://github.com/jozefchutka/lame modules/lame
-git submodule add -f -b wide.video https://github.com/jozefchutka/libsamplerate modules/libsamplerate
-git submodule add -f -b wide.video https://github.com/jozefchutka/libsndfile modules/libsndfile
-git submodule add -f -b wide.video https://github.com/jozefchutka/libvpx modules/libvpx
-git submodule add -f -b wide.video https://github.com/jozefchutka/libwebp modules/libwebp
-git submodule add -f -b wide.video https://github.com/jozefchutka/Ogg modules/Ogg
-git submodule add -f -b wide.video https://github.com/jozefchutka/opus modules/opus
-git submodule add -f -b wide.video https://github.com/jozefchutka/rubberband modules/rubberband
-git submodule add -f -b wide.video https://github.com/jozefchutka/theora modules/theora
-git submodule add -f -b wide.video https://github.com/jozefchutka/vorbis modules/vorbis
-git submodule add -f -b wide.video https://github.com/jozefchutka/x264 modules/x264
-git submodule add -f -b wide.video https://github.com/jozefchutka/x265 modules/x265
-git submodule add -f -b wide.video https://github.com/jozefchutka/zlib modules/zlib
+git submodule add -f -b wide.video https://github.com/wide-video/ffmpeg modules/ffmpeg
 ```
-
 
 ## Issues
 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 467B942D3A79BD29
-https://github.com/hashicorp/consul/issues/11162
+- [Encountered a section with no Package: header](https://github.com/hashicorp/consul/issues/11162) `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 467B942D3A79BD29`
