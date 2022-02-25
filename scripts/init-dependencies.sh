@@ -24,6 +24,6 @@ fi
 
 cd modules/emsdk/
 git pull
-./emsdk install 3.1.2
-./emsdk activate 3.1.2
+./emsdk install 3.1.5
+./emsdk activate 3.1.5
 cd ../../
