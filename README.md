@@ -52,6 +52,8 @@ source ./modules/emsdk/emsdk_env.sh
 ## 4 ffmpeg-wasm repo
 
 1. update *ffmpeg-wasm/.gitmodules* to use *wide.video* branch
+2. `git tag wv1.2.3`
+3. `git push origin wv1.2.3`
 
 ## Misc
 
