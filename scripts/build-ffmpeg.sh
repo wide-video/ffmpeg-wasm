@@ -40,6 +40,16 @@ echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 gzip --force -9 -c $WASM_DIR/ffmpeg.wasm > $WASM_DIR/ffmpeg.wasm.gz
 rm $WASM_DIR/ffmpeg.wasm
 
+# replacing stdout write script in ffmpeg.js
+STDOUT_SCRIPT_FROM="for(var i=0;i<length;i++){try{output(buffer[offset+i])}catch(e){throw new FS.ErrnoError(29)}}"
+STDOUT_SCRIPT_TO="let i = length;try{output(buffer, offset, length)}catch(e){throw new FS.ErrnoError(29)}"
+if ! grep -qF "$STDOUT_SCRIPT_FROM" "$WASM_DIR/ffmpeg.js"; then
+    echo "ffmpeg.js does not contain expected STDOUT_SCRIPT_FROM"
+    exit 1
+fi
+ESCAPED_STDOUT_SCRIPT_FROM=$(printf '%s\n' "$STDOUT_SCRIPT_FROM" | sed -e 's/[]\/$*.^[]/\\&/g');
+ESCAPED_STDOUT_SCRIPT_TO=$(printf '%s\n' "$STDOUT_SCRIPT_TO" | sed -e 's/[]\/$*.^[]/\\&/g');
+sed -i -e "s/$ESCAPED_STDOUT_SCRIPT_FROM/$ESCAPED_STDOUT_SCRIPT_TO/g" $WASM_DIR/ffmpeg.js
 gzip --force -9 -c $WASM_DIR/ffmpeg.js > $WASM_DIR/ffmpeg.js.gz
 rm $WASM_DIR/ffmpeg.js
 
