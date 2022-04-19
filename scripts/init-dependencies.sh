@@ -26,5 +26,4 @@ cd modules/emsdk/
 git pull
 ./emsdk install 3.1.8
 ./emsdk activate 3.1.8
-emcc --clear-cache
 cd ../../
