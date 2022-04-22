@@ -11,6 +11,7 @@ source ./modules/emsdk/emsdk_env.sh
 emcc -v
 
 $SCRIPT_ROOT/build-zlib.sh
+$SCRIPT_ROOT/build-aom.sh
 $SCRIPT_ROOT/build-lame.sh
 $SCRIPT_ROOT/build-libvpx.sh
 $SCRIPT_ROOT/build-libwebp.sh

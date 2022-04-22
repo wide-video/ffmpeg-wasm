@@ -11,6 +11,7 @@ FLAGS=(
   --enable-gpl            # required by x264
   --enable-version3
   --enable-zlib
+  --enable-libaom
   --enable-libx264
   --enable-libx265
   --enable-libvpx
