@@ -1,12 +1,14 @@
 # Build
 
+## Google shell
+
 ```
 sudo -s
 ./scripts/clean.sh
 ./scripts/build.sh
 ```
 
-## Single Steps
+### Single Steps
 
 ```
 sudo -s
@@ -15,6 +17,15 @@ source ./modules/emsdk/emsdk_env.sh
 ./scripts/build-zlib.sh
 ./scripts/configure-ffmpeg.sh
 ./scripts/build-ffmpeg.sh
+```
+
+## Docker
+
+```
+scripts\docker-run.bat
+	./scripts/docker-init.sh
+	./scripts/clean.sh
+	./scripts/build.sh
 ```
 
 ## Artifacts 

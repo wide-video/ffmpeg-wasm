@@ -1,0 +1,1 @@
+docker run -it -v %cd%:/ffmpeg-wasm -w /ffmpeg-wasm debian:11.3
