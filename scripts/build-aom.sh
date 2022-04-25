@@ -11,14 +11,14 @@ CM_FLAGS=(
   -DAOM_TARGET_CPU=generic
   -DENABLE_DOCS=0
   -DENABLE_TESTS=0
-  -DENABLE_CCACHE=1
   -DCONFIG_RUNTIME_CPU_DETECT=0
   -DCONFIG_WEBM_IO=0
 
   # https://aomedia.googlesource.com/aom/
-  -DCONFIG_ACCOUNTING=1
-  -DCONFIG_INSPECTION=1
-  -DCONFIG_MULTITHREAD=0
+  #-DENABLE_CCACHE=1
+  #-DCONFIG_ACCOUNTING=1
+  #-DCONFIG_INSPECTION=1
+  #-DCONFIG_MULTITHREAD=0
 
   # https://github.com/ffmpegwasm/ffmpeg.wasm-core/blob/n4.3.1-wasm/wasm/build-scripts/build-aom.sh
   -DCMAKE_INSTALL_PREFIX=$BUILD_DIR             # assign lib and include install path
@@ -37,6 +37,6 @@ rm -rf $LIB_PATH/CMakeFiles
 rm -rf $LIB_PATH/$CMBUILD_DIR
 mkdir -p $LIB_PATH/$CMBUILD_DIR
 
-(cd $LIB_PATH/$CMBUILD_DIR && emmake cmake .. ${CM_FLAGS[@]})
+(cd $LIB_PATH/$CMBUILD_DIR && emmake cmake .. ${CM_FLAGS[@]} -G "Unix Makefiles")
 emmake make -C $LIB_PATH/$CMBUILD_DIR clean
 emmake make -C $LIB_PATH/$CMBUILD_DIR install -j
