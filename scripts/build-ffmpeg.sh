@@ -14,7 +14,10 @@ FLAGS=(
   -I. -I./fftools -I$BUILD_DIR/include
   -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibpostproc -Llibswscale -Llibswresample -Lrubberband -Lsamplerate -Lflite -L$BUILD_DIR/lib
   -Wno-deprecated-declarations -Wno-pointer-sign -Wno-implicit-int-float-conversion -Wno-switch -Wno-parentheses -Qunused-arguments
-  -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lpostproc -lm -laom -lx264 -lx265 -lvpx -lmp3lame -lvorbis -lvorbisenc -lvorbisfile -logg -ltheora -ltheoraenc -ltheoradec -lz -lopus -lwebp -lwebpmux -lrubberband -lsamplerate
+  -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lpostproc
+  -lm
+  #-laom -lx264 -lx265 -lvpx -lmp3lame -lvorbis -lvorbisenc -lvorbisfile -logg -ltheora -ltheoraenc -ltheoradec -lz -lopus -lwebp -lwebpmux -lrubberband -lsamplerate
+  -lopenh264
   fftools/cmdutils.c fftools/ffmpeg.c fftools/ffmpeg_demux.c fftools/ffmpeg_filter.c fftools/ffmpeg_hw.c fftools/ffmpeg_mux.c fftools/ffmpeg_opt.c fftools/objpool.c fftools/opt_common.c fftools/sync_queue.c fftools/thread_queue.c
   -lworkerfs.js
   -s USE_SDL=2
