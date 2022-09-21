@@ -20,7 +20,7 @@ FLAGS=(
 #  --enable-libvorbis
 #  --enable-libopus
 #  --enable-libwebp
-#  --enable-librubberband
+  --enable-librubberband
   --enable-libopenh264
   --disable-x86asm
   --disable-inline-asm
@@ -43,6 +43,10 @@ FLAGS=(
   --dep-cc=emcc
   ${EXTRA_FFMPEG_CONF_FLAGS-}
 )
+
+sed -i 's/    librubberband//g' $LIB_PATH/configure
+sed -i 's/    vapoursynth/    librubberband\nvapoursynth/g' $LIB_PATH/configure
+
 echo "FFMPEG_CONFIG_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
     PKG_CONFIG_PATH=$PWD/build/lib/pkgconfig && \
