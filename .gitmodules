@@ -43,6 +43,10 @@
 	url = https://github.com/wide-video/Ogg
 	branch = wide.video
 	ignore = all
+[submodule "modules/openh264"]
+	path = modules/openh264
+	url = https://github.com/wide-video/openh264.git
+	branch = wide.video
 [submodule "modules/opus"]
 	path = modules/opus
 	url = https://github.com/wide-video/opus

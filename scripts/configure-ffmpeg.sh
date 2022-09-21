@@ -10,17 +10,18 @@ FLAGS=(
   --enable-cross-compile
   --enable-gpl            # required by x264
   --enable-version3
-  --enable-zlib
-  --enable-libaom
-  --enable-libx264
-  --enable-libx265
-  --enable-libvpx
-  --enable-libmp3lame
-  --enable-libtheora
-  --enable-libvorbis
-  --enable-libopus
-  --enable-libwebp
-  --enable-librubberband
+ # --enable-zlib
+ # --enable-libaom
+ # --enable-libx264
+# --enable-libx265
+  #--enable-libvpx
+#  --enable-libmp3lame
+#  --enable-libtheora
+#  --enable-libvorbis
+#  --enable-libopus
+#  --enable-libwebp
+#  --enable-librubberband
+  --enable-libopenh264
   --disable-x86asm
   --disable-inline-asm
   --disable-stripping
