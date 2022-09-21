@@ -8,18 +8,15 @@ FLAGS=(
   --target-os=none        # use none to prevent any os specific configurations
   --arch=x86_32           # use x86_32 to achieve minimal architectural optimization
   --enable-cross-compile
-#  --enable-gpl            # required by x264
   --enable-version3
- # --enable-zlib
- # --enable-libaom
- # --enable-libx264
-# --enable-libx265
-  #--enable-libvpx
-#  --enable-libmp3lame
-#  --enable-libtheora
-#  --enable-libvorbis
-#  --enable-libopus
-#  --enable-libwebp
+  --enable-zlib
+  --enable-libaom
+  --enable-libvpx
+  --enable-libmp3lame
+  --enable-libtheora
+  --enable-libvorbis
+  --enable-libopus
+  --enable-libwebp
   --enable-librubberband
   --enable-libopenh264
   --disable-x86asm
