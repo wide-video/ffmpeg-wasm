@@ -8,7 +8,7 @@ FLAGS=(
   --target-os=none        # use none to prevent any os specific configurations
   --arch=x86_32           # use x86_32 to achieve minimal architectural optimization
   --enable-cross-compile
-  --enable-gpl            # required by x264
+#  --enable-gpl            # required by x264
   --enable-version3
  # --enable-zlib
  # --enable-libaom
