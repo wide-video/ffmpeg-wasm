@@ -11,6 +11,8 @@ FLAGS=(
   --enable-version3
   --enable-zlib
   --enable-libaom
+  --enable-libopenh264
+  --enable-libkvazaar
   --enable-libvpx
   --enable-libmp3lame
   --enable-libtheora
@@ -18,8 +20,6 @@ FLAGS=(
   --enable-libopus
   --enable-libwebp
   --enable-librubberband
-  --enable-libopenh264
-  --enable-libkvazaar
   --disable-x86asm
   --disable-inline-asm
   --disable-stripping
