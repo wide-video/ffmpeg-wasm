@@ -19,6 +19,7 @@ FLAGS=(
   --enable-libwebp
   --enable-librubberband
   --enable-libopenh264
+  --enable-libkvazaar
   --disable-x86asm
   --disable-inline-asm
   --disable-stripping
@@ -42,7 +43,7 @@ FLAGS=(
 )
 
 sed -i 's/    librubberband//g' $LIB_PATH/configure
-sed -i 's/    vapoursynth/    librubberband\nvapoursynth/g' $LIB_PATH/configure
+sed -i 's/    vapoursynth/librubberband\nvapoursynth/g' $LIB_PATH/configure
 
 echo "FFMPEG_CONFIG_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
