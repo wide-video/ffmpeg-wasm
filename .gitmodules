@@ -1,6 +1,6 @@
 [submodule "modules/emsdk"]
 	path = modules/emsdk
-	url = https://github.com/emscripten-core/emsdk.git
+	url = https://github.com/emscripten-core/emsdk
 	branch = main
 	ignore = all
 [submodule "modules/ffmpeg"]
@@ -13,6 +13,10 @@
 	url = https://github.com/wide-video/aom
 	branch = wide.video
 	ignore = all
+[submodule "modules/kvazaar"]
+	path = modules/kvazaar
+	url = https://github.com/wide-video/kvazaar
+	branch = wide.video
 [submodule "modules/lame"]
 	path = modules/lame
 	url = https://github.com/wide-video/lame
@@ -43,6 +47,10 @@
 	url = https://github.com/wide-video/Ogg
 	branch = wide.video
 	ignore = all
+[submodule "modules/openh264"]
+	path = modules/openh264
+	url = https://github.com/wide-video/openh264
+	branch = wide.video
 [submodule "modules/opus"]
 	path = modules/opus
 	url = https://github.com/wide-video/opus
