@@ -17,6 +17,7 @@
 	path = modules/kvazaar
 	url = https://github.com/wide-video/kvazaar
 	branch = wide.video
+	ignore = all
 [submodule "modules/lame"]
 	path = modules/lame
 	url = https://github.com/wide-video/lame
