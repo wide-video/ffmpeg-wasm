@@ -38,8 +38,8 @@ echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
     emmake make -j && \
     emcc "${FLAGS[@]}")
 
-gzip --force -9 -c $WASM_DIR/ffmpeg.wasm > $WASM_DIR/ffmpeg.wasm.gz
-rm $WASM_DIR/ffmpeg.wasm
+#gzip --force -9 -c $WASM_DIR/ffmpeg.wasm > $WASM_DIR/ffmpeg.wasm.gz
+#rm $WASM_DIR/ffmpeg.wasm
 
 # replacing stdout write script in ffmpeg.js
 STDOUT_SCRIPT_FROM="for(var i=0;i<length;i++){try{output(buffer[offset+i])}catch(e){throw new FS.ErrnoError(29)}}"
@@ -63,11 +63,11 @@ ESCAPED_TTY_SCRIPT_FROM=$(printf '%s\n' "$TTY_SCRIPT_FROM" | sed -e 's/[]\/$*.^[
 ESCAPED_TTY_SCRIPT_TO=$(printf '%s\n' "$TTY_SCRIPT_TO" | sed -e 's/[\/&]/\\&/g');
 sed -i -e "s/$ESCAPED_TTY_SCRIPT_FROM/$ESCAPED_TTY_SCRIPT_TO/g" $WASM_DIR/ffmpeg.js
 
-gzip --force -9 -c $WASM_DIR/ffmpeg.js > $WASM_DIR/ffmpeg.js.gz
-rm $WASM_DIR/ffmpeg.js
+#gzip --force -9 -c $WASM_DIR/ffmpeg.js > $WASM_DIR/ffmpeg.js.gz
+#rm $WASM_DIR/ffmpeg.js
 
-gzip --force -9 -c $WASM_DIR/ffmpeg.worker.js > $WASM_DIR/ffmpeg.worker.js.gz
-rm $WASM_DIR/ffmpeg.worker.js
+#gzip --force -9 -c $WASM_DIR/ffmpeg.worker.js > $WASM_DIR/ffmpeg.worker.js.gz
+#rm $WASM_DIR/ffmpeg.worker.js
 
 echo "emcc ${FLAGS[@]}" > $INFO_FILE
 echo "" >> $INFO_FILE
@@ -81,3 +81,5 @@ emcc -v &>> $INFO_FILE
 echo "" >> $INFO_FILE
 
 git submodule foreach 'git config --get remote.origin.url && git rev-parse HEAD && echo ""' >> $INFO_FILE
+
+tar -czvf $WASM_DIR/release.tar.gz $WASM_DIR/ffmpeg.wasm $WASM_DIR/ffmpeg.js $WASM_DIR/ffmpeg.worker.js $INFO_FILE
