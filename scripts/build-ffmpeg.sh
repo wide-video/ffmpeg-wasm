@@ -11,17 +11,17 @@ mkdir -p $WASM_DIR
 
 if [[ "$FFMPEG_ST" == "yes" ]]; then
   OUTPUT=$WASM_DIR/st.js
-  INFO_FILE=$WASM_DIR/st-info.txt
-  TAR_FILE=$WASM_DIR/st.tar.gz
+  INFO_FILE=$WASM_DIR/st.txt
+  TAR_FILE=$WASM_DIR-st.tar.gz
+  EXTRA_FLAGS=()
+else
+  OUTPUT=$WASM_DIR/mt.js
+  INFO_FILE=$WASM_DIR/mt.txt
+  TAR_FILE=$WASM_DIR-mt.tar.gz
   EXTRA_FLAGS=(
     -pthread
     -s PROXY_TO_PTHREAD=1
   )
-else
-  OUTPUT=$WASM_DIR/mt.js
-  INFO_FILE=$WASM_DIR/mt-info.txt
-  TAR_FILE=$WASM_DIR/mt.tar.gz
-  EXTRA_FLAGS=()
 fi
 
 FLAGS=(

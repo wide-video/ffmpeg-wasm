@@ -5,6 +5,11 @@
 ```
 sudo -s
 ./scripts/clean.sh
+
+export FFMPEG_ST=no
+./scripts/build.sh
+
+export FFMPEG_ST=yes
 ./scripts/build.sh
 ```
 

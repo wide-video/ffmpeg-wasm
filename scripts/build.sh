@@ -10,29 +10,18 @@ source ./modules/emsdk/emsdk_env.sh
 
 emcc -v
 
-build()
-{
-  FFMPEG_ST=$1
+$SCRIPT_ROOT/build-zlib.sh
+$SCRIPT_ROOT/build-aom.sh
+$SCRIPT_ROOT/build-lame.sh
+$SCRIPT_ROOT/build-libvpx.sh
+$SCRIPT_ROOT/build-libwebp.sh
+$SCRIPT_ROOT/build-ogg.sh
+$SCRIPT_ROOT/build-opus.sh
+$SCRIPT_ROOT/build-rubberband.sh
+$SCRIPT_ROOT/build-theora.sh
+$SCRIPT_ROOT/build-vorbis.sh
+$SCRIPT_ROOT/build-openh264.sh
+$SCRIPT_ROOT/build-kvazaar.sh
 
-  $SCRIPT_ROOT/build-zlib.sh
-  $SCRIPT_ROOT/build-aom.sh
-  $SCRIPT_ROOT/build-lame.sh
-  $SCRIPT_ROOT/build-libvpx.sh
-  $SCRIPT_ROOT/build-libwebp.sh
-  $SCRIPT_ROOT/build-ogg.sh
-  $SCRIPT_ROOT/build-opus.sh
-  $SCRIPT_ROOT/build-rubberband.sh
-  $SCRIPT_ROOT/build-theora.sh
-  $SCRIPT_ROOT/build-vorbis.sh
-  $SCRIPT_ROOT/build-openh264.sh
-  $SCRIPT_ROOT/build-kvazaar.sh
-
-  $SCRIPT_ROOT/configure-ffmpeg.sh
-  $SCRIPT_ROOT/build-ffmpeg.sh
-}
-
-## Multi thread
-build "no"
-
-## Single thread
-build "yes"
+$SCRIPT_ROOT/configure-ffmpeg.sh
+$SCRIPT_ROOT/build-ffmpeg.sh
