@@ -6,6 +6,7 @@ source $(dirname $0)/var.sh
 LIB_PATH=modules/ffmpeg
 WASM_DIR=$ROOT_DIR/build/wasm
 
+rm -rf $WASM_DIR
 mkdir -p $WASM_DIR
 
 if [[ "$FFMPEG_ST" == "yes" ]]; then
