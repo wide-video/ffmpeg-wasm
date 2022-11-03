@@ -5,9 +5,23 @@ source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
 WASM_DIR=$ROOT_DIR/build/wasm
-INFO_FILE=$WASM_DIR/info.txt
 
 mkdir -p $WASM_DIR
+
+if [[ "$FFMPEG_ST" == "yes" ]]; then
+  OUTPUT=$WASM_DIR/st.js
+  INFO_FILE=$WASM_DIR/st-info.txt
+  TAR_FILE=$WASM_DIR/st.tar.gz
+  EXTRA_FLAGS=(
+    -pthread
+    -s PROXY_TO_PTHREAD=1
+  )
+else
+  OUTPUT=$WASM_DIR/mt.js
+  INFO_FILE=$WASM_DIR/mt-info.txt
+  TAR_FILE=$WASM_DIR/mt.tar.gz
+  EXTRA_FLAGS=()
+fi
 
 FLAGS=(
   $CFLAGS
@@ -29,9 +43,8 @@ FLAGS=(
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
   -s ENVIRONMENT=worker
-  -s PROXY_TO_PTHREAD=1
-  -pthread
-  -o $WASM_DIR/ffmpeg.js
+   ${EXTRA_FLAGS[@]}
+   -o $OUTPUT
 )
 echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
@@ -41,24 +54,24 @@ echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 # replacing stdout write script in ffmpeg.js
 STDOUT_SCRIPT_FROM="for(var i=0;i<length;i++){try{output(buffer[offset+i])}catch(e){throw new FS.ErrnoError(29)}}"
 STDOUT_SCRIPT_TO="let i = length;try{output(buffer, offset, length)}catch(e){throw new FS.ErrnoError(29)}"
-if ! grep -qF "$STDOUT_SCRIPT_FROM" "$WASM_DIR/ffmpeg.js"; then
-    echo "ffmpeg.js does not contain expected STDOUT_SCRIPT_FROM"
+if ! grep -qF "$STDOUT_SCRIPT_FROM" "$OUTPUT"; then
+    echo "$OUTPUT does not contain expected STDOUT_SCRIPT_FROM"
     exit 1
 fi
 ESCAPED_STDOUT_SCRIPT_FROM=$(printf '%s\n' "$STDOUT_SCRIPT_FROM" | sed -e 's/[]\/$*.^[]/\\&/g');
 ESCAPED_STDOUT_SCRIPT_TO=$(printf '%s\n' "$STDOUT_SCRIPT_TO" | sed -e 's/[\/&]/\\&/g');
-sed -i -e "s/$ESCAPED_STDOUT_SCRIPT_FROM/$ESCAPED_STDOUT_SCRIPT_TO/g" $WASM_DIR/ffmpeg.js
+sed -i -e "s/$ESCAPED_STDOUT_SCRIPT_FROM/$ESCAPED_STDOUT_SCRIPT_TO/g" $OUTPUT
 
 # replacing tty write script in ffmpeg.js
 TTY_SCRIPT_FROM="try{for(var i=0;i<length;i++){stream.tty.ops.put_char(stream.tty,buffer[offset+i])}}"
 TTY_SCRIPT_TO="try{if(Module.tty && Module.tty(stream,buffer,offset,length,pos))var i=length;else for(var i=0;i<length;i++){stream.tty.ops.put_char(stream.tty,buffer[offset+i])}}"
-if ! grep -qF "$TTY_SCRIPT_FROM" "$WASM_DIR/ffmpeg.js"; then
-    echo "ffmpeg.js does not contain expected TTY_SCRIPT_FROM"
+if ! grep -qF "$TTY_SCRIPT_FROM" "$OUTPUT"; then
+    echo "$OUTPUT does not contain expected TTY_SCRIPT_FROM"
     exit 1
 fi
 ESCAPED_TTY_SCRIPT_FROM=$(printf '%s\n' "$TTY_SCRIPT_FROM" | sed -e 's/[]\/$*.^[]/\\&/g');
 ESCAPED_TTY_SCRIPT_TO=$(printf '%s\n' "$TTY_SCRIPT_TO" | sed -e 's/[\/&]/\\&/g');
-sed -i -e "s/$ESCAPED_TTY_SCRIPT_FROM/$ESCAPED_TTY_SCRIPT_TO/g" $WASM_DIR/ffmpeg.js
+sed -i -e "s/$ESCAPED_TTY_SCRIPT_FROM/$ESCAPED_TTY_SCRIPT_TO/g" $OUTPUT
 
 echo "emcc ${FLAGS[@]}" > $INFO_FILE
 echo "" >> $INFO_FILE
@@ -73,4 +86,4 @@ echo "" >> $INFO_FILE
 
 git submodule foreach 'git config --get remote.origin.url && git rev-parse HEAD && echo ""' >> $INFO_FILE
 
-tar -czvf $WASM_DIR.tar.gz -C $WASM_DIR .
+tar -czvf $TAR_FILE -C $WASM_DIR .

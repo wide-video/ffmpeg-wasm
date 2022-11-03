@@ -4,6 +4,17 @@ set -euo pipefail
 source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
+
+if [[ "$FFMPEG_ST" == "yes" ]]; then
+  EXTRA_FLAGS=(
+    --disable-pthreads
+	--disable-w32threads
+	--disable-os2threads
+  )
+else
+  EXTRA_FLAGS=()  
+fi
+
 FLAGS=(
   --target-os=none        # use none to prevent any os specific configurations
   --arch=x86_32           # use x86_32 to achieve minimal architectural optimization
@@ -39,7 +50,7 @@ FLAGS=(
   --cxx=em++
   --objcc=emcc
   --dep-cc=emcc
-  ${EXTRA_FFMPEG_CONF_FLAGS-}
+  ${EXTRA_FLAGS[@]}
 )
 
 sed -i 's/    librubberband//g' $LIB_PATH/configure
