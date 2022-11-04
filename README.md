@@ -38,7 +38,8 @@ scripts\docker-run.bat
 ## Artifacts 
 
 ```
-./build/wasm
+./build/wasm-mt
+./build/wasm-st
 ```
 
 # Updating

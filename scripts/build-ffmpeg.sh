@@ -9,13 +9,11 @@ if [[ "$FFMPEG_ST" == "yes" ]]; then
   WASM_DIR=$ROOT_DIR/build/wasm-st
   OUTPUT=$WASM_DIR/st.js
   INFO_FILE=$WASM_DIR/st.txt
-  TAR_FILE=$WASM_DIR-st.tar.gz
   EXTRA_FLAGS=()
 else
   WASM_DIR=$ROOT_DIR/build/wasm-mt
   OUTPUT=$WASM_DIR/mt.js
   INFO_FILE=$WASM_DIR/mt.txt
-  TAR_FILE=$WASM_DIR-mt.tar.gz
   EXTRA_FLAGS=(
     -pthread
     -s PROXY_TO_PTHREAD=1
@@ -87,4 +85,4 @@ echo "" >> $INFO_FILE
 
 git submodule foreach 'git config --get remote.origin.url && git rev-parse HEAD && echo ""' >> $INFO_FILE
 
-tar -czvf $TAR_FILE -C $WASM_DIR .
+tar -czvf $WASM_DIR.tar.gz -C $WASM_DIR .
