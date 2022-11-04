@@ -10,7 +10,6 @@ CONF_FLAGS=(
   --enable-static               # enable building static library
   --disable-shared
   --with-pic
-  ${EXTRA_CONF_FLAGS-}
 )
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 (cd $LIB_PATH && \

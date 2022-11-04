@@ -13,7 +13,6 @@ CONF_FLAGS=(
   BUILDTYPE=Release
   DEBUGSYMBOLS=False
   CFLAGS="$CFLAGS -fno-stack-protector"      # flags to use pthread and code optimization
-  ${EXTRA_CONF_FLAGS-}
 )
 
 emmake make -C $LIB_PATH clean

@@ -4,17 +4,15 @@ set -eo pipefail
 source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
-WASM_DIR=$ROOT_DIR/build/wasm
-
-rm -rf $WASM_DIR
-mkdir -p $WASM_DIR
 
 if [[ "$FFMPEG_ST" == "yes" ]]; then
+  WASM_DIR=$ROOT_DIR/build/wasm-st
   OUTPUT=$WASM_DIR/st.js
   INFO_FILE=$WASM_DIR/st.txt
   TAR_FILE=$WASM_DIR-st.tar.gz
   EXTRA_FLAGS=()
 else
+  WASM_DIR=$ROOT_DIR/build/wasm-mt
   OUTPUT=$WASM_DIR/mt.js
   INFO_FILE=$WASM_DIR/mt.txt
   TAR_FILE=$WASM_DIR-mt.tar.gz
@@ -23,6 +21,8 @@ else
     -s PROXY_TO_PTHREAD=1
   )
 fi
+
+mkdir -p $WASM_DIR
 
 FLAGS=(
   $CFLAGS
