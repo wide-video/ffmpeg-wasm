@@ -5,11 +5,6 @@
 ```
 sudo -s
 ./scripts/clean.sh
-
-export FFMPEG_ST=no
-./scripts/build.sh
-
-export FFMPEG_ST=yes
 ./scripts/build.sh
 ```
 
@@ -38,8 +33,7 @@ scripts\docker-run.bat
 ## Artifacts 
 
 ```
-./build/wasm-mt
-./build/wasm-st
+./build/wasm
 ```
 
 # Updating

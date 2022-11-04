@@ -4,25 +4,9 @@ set -eo pipefail
 source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
-
-if [[ "$FFMPEG_ST" == "yes" ]]; then
-  WASM_DIR=$ROOT_DIR/build/wasm-st
-  OUTPUT=$WASM_DIR/st.js
-  INFO_FILE=$WASM_DIR/st.txt
-  EXTRA_FLAGS=(
-      -s EXPORTED_FUNCTIONS="[_main]"
-  )
-else
-  WASM_DIR=$ROOT_DIR/build/wasm-mt
-  OUTPUT=$WASM_DIR/mt.js
-  INFO_FILE=$WASM_DIR/mt.txt
-  EXTRA_FLAGS=(
-    -lopenh264 # https://github.com/cisco/openh264/issues/3589
-    -pthread
-    -s PROXY_TO_PTHREAD=1
-    -s EXPORTED_FUNCTIONS="[_main, ___wasm_init_memory_flag]"
-  )
-fi
+WASM_DIR=$ROOT_DIR/build/wasm
+INFO_FILE=$WASM_DIR/info.txt
+OUTPUT=$WASM_DIR/ffmpeg.js
 
 mkdir -p $WASM_DIR
 
@@ -32,7 +16,7 @@ FLAGS=(
   -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibswscale -Llibswresample -Lrubberband -Lsamplerate -Lflite -L$BUILD_DIR/lib
   -Wno-deprecated-declarations -Wno-pointer-sign -Wno-implicit-int-float-conversion -Wno-switch -Wno-parentheses -Qunused-arguments
   -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lm 
-  -laom -lkvazaar -lvpx -lmp3lame -lvorbis -lvorbisenc -lvorbisfile -logg -ltheora -ltheoraenc -ltheoradec -lz -lopus -lwebp -lwebpmux -lrubberband -lsamplerate
+  -laom -lopenh264 -lkvazaar -lvpx -lmp3lame -lvorbis -lvorbisenc -lvorbisfile -logg -ltheora -ltheoraenc -ltheoradec -lz -lopus -lwebp -lwebpmux -lrubberband -lsamplerate
   fftools/cmdutils.c fftools/ffmpeg.c fftools/ffmpeg_demux.c fftools/ffmpeg_filter.c fftools/ffmpeg_hw.c fftools/ffmpeg_mux.c fftools/ffmpeg_mux_init.c fftools/ffmpeg_opt.c fftools/objpool.c fftools/opt_common.c fftools/sync_queue.c fftools/thread_queue.c
   -lworkerfs.js
   -s USE_SDL=2
@@ -40,12 +24,14 @@ FLAGS=(
   -s EXIT_RUNTIME=1
   -s MODULARIZE=1
   -s EXPORT_NAME="createFFmpeg"
+  -s EXPORTED_FUNCTIONS="[_main, ___wasm_init_memory_flag]"
   -s EXPORTED_RUNTIME_METHODS="[callMain, FS, WORKERFS]"
   -s INITIAL_MEMORY=128mb
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
   -s ENVIRONMENT=worker
-   ${EXTRA_FLAGS[@]}
+  -s PROXY_TO_PTHREAD=1
+  -pthread
    -o $OUTPUT
 )
 echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"

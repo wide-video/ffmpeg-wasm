@@ -36,7 +36,7 @@ FLAGS=(
   --disable-x86asm
   --disable-inline-asm
   --disable-stripping
-  --disable-programs      # disable programs build (incl. ffplay, ffprobe & ffmpeg)
+  #--disable-programs      # disable programs build (incl. ffplay, ffprobe & ffmpeg)
   --disable-doc
   --disable-debug
   --disable-runtime-cpudetect
