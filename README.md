@@ -13,6 +13,8 @@ export FFMPEG_ST=yes
 ./scripts/build.sh
 ```
 
+- [single thread version is not buildable](https://trac.ffmpeg.org/ticket/10009)
+
 ### Single Steps
 
 ```
