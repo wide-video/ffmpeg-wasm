@@ -5,10 +5,6 @@ source $(dirname $0)/var.sh
 
 LIB_PATH=modules/libvpx
 
-if [[ "$FFMPEG_ST" == "yes" ]]; then
-  EXTRA_CONF_FLAGS="--disable-multithread"
-fi
-
 CONF_FLAGS=(
   --prefix=$BUILD_DIR                                # install library in a build directory for FFmpeg to include
   --target=generic-gnu                               # target with miminal features

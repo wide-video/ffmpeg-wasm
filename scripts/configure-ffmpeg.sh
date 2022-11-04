@@ -5,19 +5,6 @@ source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
 
-if [[ "$FFMPEG_ST" == "yes" ]]; then
-  EXTRA_FLAGS=(
-# https://trac.ffmpeg.org/ticket/10009
-#   --disable-pthreads
-#	--disable-w32threads
-#	--disable-os2threads
-  )
-else
-  EXTRA_FLAGS=(
-      --enable-libopenh264 # https://github.com/cisco/openh264/issues/3589
-  )  
-fi
-
 FLAGS=(
   --target-os=none        # use none to prevent any os specific configurations
   --arch=x86_32           # use x86_32 to achieve minimal architectural optimization
@@ -25,6 +12,7 @@ FLAGS=(
   --enable-version3
   --enable-zlib
   --enable-libaom
+  --enable-libopenh264
   --enable-libkvazaar
   --enable-libvpx
   --enable-libmp3lame
@@ -36,7 +24,7 @@ FLAGS=(
   --disable-x86asm
   --disable-inline-asm
   --disable-stripping
-  #--disable-programs      # disable programs build (incl. ffplay, ffprobe & ffmpeg)
+  --disable-programs      # disable programs build (incl. ffplay, ffprobe & ffmpeg)
   --disable-doc
   --disable-debug
   --disable-runtime-cpudetect
@@ -52,7 +40,6 @@ FLAGS=(
   --cxx=em++
   --objcc=emcc
   --dep-cc=emcc
-  ${EXTRA_FLAGS[@]}
 )
 
 sed -i 's/    librubberband//g' $LIB_PATH/configure

@@ -3,10 +3,6 @@
 set -euo pipefail
 source $(dirname $0)/var.sh
 
-if [[ "$FFMPEG_ST" == "yes" ]]; then
-  EXTRA_CONF_FLAGS="--disable-thread"
-fi
-
 LIB_PATH=modules/x264
 CONF_FLAGS=(
   --prefix=$BUILD_DIR           # install library in a build directory for FFmpeg to include
