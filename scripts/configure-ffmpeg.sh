@@ -7,12 +7,15 @@ LIB_PATH=modules/ffmpeg
 
 if [[ "$FFMPEG_ST" == "yes" ]]; then
   EXTRA_FLAGS=(
-    --disable-pthreads
-	--disable-w32threads
-	--disable-os2threads
+# https://trac.ffmpeg.org/ticket/10009
+#   --disable-pthreads
+#	--disable-w32threads
+#	--disable-os2threads
   )
 else
-  EXTRA_FLAGS=()  
+  EXTRA_FLAGS=(
+      --enable-libopenh264 # https://github.com/cisco/openh264/issues/3589
+  )  
 fi
 
 FLAGS=(
@@ -22,7 +25,6 @@ FLAGS=(
   --enable-version3
   --enable-zlib
   --enable-libaom
-  --enable-libopenh264
   --enable-libkvazaar
   --enable-libvpx
   --enable-libmp3lame
