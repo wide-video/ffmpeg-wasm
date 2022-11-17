@@ -22,7 +22,12 @@ TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmak
 OPTIM_FLAGS="-O3"
 
 CFLAGS_BASE="$OPTIM_FLAGS -I$BUILD_DIR/include -s USE_PTHREADS=1"
-CFLAGS="$CFLAGS_BASE -msimd128"
+
+if [ "$FFMPEG_SIMD" = true ] ; then
+    CFLAGS="$CFLAGS_BASE -msimd128"
+else
+    CFLAGS="$CFLAGS_BASE"
+fi
 
 export CFLAGS=$CFLAGS
 export CXXFLAGS=$CFLAGS

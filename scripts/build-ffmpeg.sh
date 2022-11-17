@@ -4,9 +4,14 @@ set -eo pipefail
 source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
-WASM_DIR=$ROOT_DIR/build/wasm
+WASM_DIR=$ROOT_DIR/wasm
 INFO_FILE=$WASM_DIR/info.txt
-OUTPUT=$WASM_DIR/ffmpeg.js
+
+if [ "$FFMPEG_SIMD" = true ] ; then
+    OUTPUT=$WASM_DIR/ffmpeg-simd.js
+else
+    OUTPUT=$WASM_DIR/ffmpeg.js
+fi
 
 mkdir -p $WASM_DIR
 
@@ -32,7 +37,7 @@ FLAGS=(
   -s ENVIRONMENT=worker
   -s PROXY_TO_PTHREAD=1
   -pthread
-   -o $OUTPUT
+  -o $OUTPUT
 )
 echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
@@ -73,5 +78,3 @@ emcc -v &>> $INFO_FILE
 echo "" >> $INFO_FILE
 
 git submodule foreach 'git config --get remote.origin.url && git rev-parse HEAD && echo ""' >> $INFO_FILE
-
-tar -czvf $WASM_DIR.tar.gz -C $WASM_DIR .

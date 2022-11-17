@@ -4,8 +4,7 @@
 
 ```
 sudo -s
-./scripts/clean.sh
-./scripts/build.sh
+./scripts/release.sh
 ```
 
 - [single thread version is not buildable](https://trac.ffmpeg.org/ticket/10009)
@@ -14,11 +13,12 @@ sudo -s
 
 ```
 sudo -s
-./scripts/init-dependencies.sh
-source ./modules/emsdk/emsdk_env.sh
-./scripts/build-zlib.sh
-./scripts/configure-ffmpeg.sh
-./scripts/build-ffmpeg.sh
+./scripts/clean.sh
+./scripts/init-dependencies.sh       # build.sh
+source ./modules/emsdk/emsdk_env.sh  # build.sh
+./scripts/build-zlib.sh              # build.sh
+./scripts/configure-ffmpeg.sh        # build.sh
+./scripts/build-ffmpeg.sh            # build.sh
 ```
 
 ## Docker
@@ -33,7 +33,7 @@ scripts\docker-run.bat
 ## Artifacts 
 
 ```
-./build/wasm
+./wasm
 ```
 
 # Updating
