@@ -25,3 +25,4 @@ $SCRIPT_ROOT/build-kvazaar.sh
 
 $SCRIPT_ROOT/configure-ffmpeg.sh
 $SCRIPT_ROOT/build-ffmpeg.sh
+$SCRIPT_ROOT/customize-ffmpeg.sh
