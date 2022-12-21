@@ -32,6 +32,18 @@ FLAGS=(
   -pthread
   -o $OUTPUT_PATH
 )
+
+if [ "$FFMPEG_LGPL" = false ] ; then
+    OUTPUT_FILENAME="$OUTPUT_FILENAME-lgpl"
+    FLAGS+=(
+        -lx264
+        -lx265
+        --enable-gpl
+        --enable-libx264
+        --enable-libx265
+    )
+fi
+
 echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
     emmake make -j && \

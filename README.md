@@ -13,12 +13,15 @@ sudo -s
 
 ```
 sudo -s
-./scripts/clean.sh
+exprot FFMPEG_SIMD=true              # release.sh
+export FFMPEG_LGPL=true              # release.sh
+./scripts/clean.sh                   # release.sh
 ./scripts/init-dependencies.sh       # build.sh
 source ./modules/emsdk/emsdk_env.sh  # build.sh
 ./scripts/build-zlib.sh              # build.sh
 ./scripts/configure-ffmpeg.sh        # build.sh
 ./scripts/build-ffmpeg.sh            # build.sh
+./scripts/customize-ffmpeg.sh        # build.sh
 ```
 
 ## Docker

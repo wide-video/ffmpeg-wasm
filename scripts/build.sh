@@ -22,6 +22,8 @@ $SCRIPT_ROOT/build-theora.sh
 $SCRIPT_ROOT/build-vorbis.sh
 $SCRIPT_ROOT/build-openh264.sh
 $SCRIPT_ROOT/build-kvazaar.sh
+$SCRIPT_ROOT/build-x264.sh
+$SCRIPT_ROOT/build-x265.sh
 
 $SCRIPT_ROOT/configure-ffmpeg.sh
 $SCRIPT_ROOT/build-ffmpeg.sh
