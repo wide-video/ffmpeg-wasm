@@ -15,6 +15,7 @@ sudo -s
 sudo -s
 exprot FFMPEG_SIMD=true              # release.sh
 export FFMPEG_LGPL=true              # release.sh
+export FFMPEG_SKIP_LIBS=false        # release.sh
 ./scripts/clean.sh                   # release.sh
 ./scripts/init-dependencies.sh       # build.sh
 source ./modules/emsdk/emsdk_env.sh  # build.sh

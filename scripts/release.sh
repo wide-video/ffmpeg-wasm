@@ -9,20 +9,22 @@ SCRIPT_ROOT=$(dirname $0)
 
 export FFMPEG_SIMD=true
 export FFMPEG_LGPL=true
+export FFMPEG_SKIP_LIBS=false
 $SCRIPT_ROOT/clean.sh
 $SCRIPT_ROOT/build.sh
 
 export FFMPEG_SIMD=true
 export FFMPEG_LGPL=false
-$SCRIPT_ROOT/clean.sh
+export FFMPEG_SKIP_LIBS=true
 $SCRIPT_ROOT/build.sh
 
 export FFMPEG_SIMD=false
 export FFMPEG_LGPL=true
+export FFMPEG_SKIP_LIBS=false
 $SCRIPT_ROOT/clean.sh
 $SCRIPT_ROOT/build.sh
 
 export FFMPEG_SIMD=false
 export FFMPEG_LGPL=false
-$SCRIPT_ROOT/clean.sh
+export FFMPEG_SKIP_LIBS=true
 $SCRIPT_ROOT/build.sh
