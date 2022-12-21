@@ -42,6 +42,14 @@ FLAGS=(
   --dep-cc=emcc
 )
 
+if [ "$FFMPEG_LGPL" = false ] ; then
+    FLAGS+=(
+        --enable-gpl
+        --enable-libx264
+        --enable-libx265
+    )
+fi
+
 sed -i 's/    librubberband//g' $LIB_PATH/configure
 sed -i 's/    vapoursynth/librubberband\nvapoursynth/g' $LIB_PATH/configure
 

@@ -38,9 +38,6 @@ if [ "$FFMPEG_LGPL" = false ] ; then
     FLAGS+=(
         -lx264
         -lx265
-        --enable-gpl
-        --enable-libx264
-        --enable-libx265
     )
 fi
 
