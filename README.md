@@ -30,8 +30,7 @@ source ./modules/emsdk/emsdk_env.sh  # build.sh
 ```
 scripts\docker-run.bat
 	./scripts/docker-init.sh
-	./scripts/clean.sh
-	./scripts/build.sh
+	./scripts/release.sh
 ```
 
 ## Artifacts 
