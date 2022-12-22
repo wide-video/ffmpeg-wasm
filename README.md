@@ -1,6 +1,6 @@
 # WebAssembly port of FFmpeg
 
-This repository hosts scripts and commands to build WebAssembly port of FFmpeg powering [wide.video | Free Online Video Editor](https://wide.video).
+This repository hosts scripts and commands to build WebAssembly port of FFmpeg powering [wide.video | Free Online Video Editor](https://wide.video) and [ffmpeg.wide.video | FFmpeg Online](https://ffmpeg.wide.video).
 
 ## Build
 
@@ -8,8 +8,8 @@ Default build procedure using docker will produce multiple (gpl, lgpl, simd) art
 
 ```shell
 scripts\docker-run.bat
-	./scripts/docker-init.sh
-	./scripts/release.sh
+	./scripts/docker-init.sh    # execute in container shell
+	./scripts/release.sh        # execute in container shell
 ```
 
 Alternatively, non-container build can be executed similarly:
@@ -23,7 +23,7 @@ Release script further executes configuration and build of each submodule, which
 
 ```shell
 sudo -s
-exprot FFMPEG_SIMD=true              # release.sh
+export FFMPEG_SIMD=true              # release.sh
 export FFMPEG_LGPL=true              # release.sh
 export FFMPEG_SKIP_LIBS=false        # release.sh
 ./scripts/clean.sh                   # release.sh
@@ -37,5 +37,5 @@ source ./modules/emsdk/emsdk_env.sh  # build.sh
 
 ## Known Issues
 
-- Google shell [Encountered a section with no Package: header](https://github.com/hashicorp/consul/issues/11162) `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 467B942D3A79BD29`
+- Google shell [Encountered a section with no Package: header](https://github.com/hashicorp/consul/issues/11162) can be resolved by calling `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 467B942D3A79BD29`
 - [Single thread version is not buildable](https://trac.ffmpeg.org/ticket/10009) as FFmpeg [depends upon threading](http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=760ce4bc0bd11f74f0851c0a662dd5cae888df83).
