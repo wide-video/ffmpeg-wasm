@@ -52,7 +52,7 @@
 	path = modules/openh264
 	url = https://github.com/wide-video/openh264
 	branch = wide.video
-    ignore = all
+	ignore = all
 [submodule "modules/opus"]
 	path = modules/opus
 	url = https://github.com/wide-video/opus

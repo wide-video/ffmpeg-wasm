@@ -5,6 +5,17 @@ source $(dirname $0)/var.sh
 
 cp -fr $OUTPUT_PATH $OUTPUT_PATH_WV
 
+# replacing default stack size in ffmpeg.js
+STACK_SIZE_SCRIPT_FROM="__emscripten_default_pthread_stack_size(){return 65536}"
+STACK_SIZE_SCRIPT_TO="__emscripten_default_pthread_stack_size(){return 2097152}"
+if ! grep -qF "$STACK_SIZE_SCRIPT_FROM" "$OUTPUT_PATH_WV"; then
+    echo "$OUTPUT_PATH_WV does not contain expected STACK_SIZE_SCRIPT_FROM"
+    exit 1
+fi
+ESCAPED_STACK_SIZE_SCRIPT_FROM=$(printf '%s\n' "$STACK_SIZE_SCRIPT_FROM" | sed -e 's/[]\/$*.^[]/\\&/g');
+ESCAPED_STACK_SIZE_SCRIPT_TO=$(printf '%s\n' "$STACK_SIZE_SCRIPT_TO" | sed -e 's/[\/&]/\\&/g');
+sed -i -e "s/$ESCAPED_STACK_SIZE_SCRIPT_FROM/$ESCAPED_STACK_SIZE_SCRIPT_TO/g" $OUTPUT_PATH_WV
+
 
 # replacing stdout write script in ffmpeg.js
 STDOUT_SCRIPT_FROM="for(var i=0;i<length;i++){try{output(buffer[offset+i])}catch(e){throw new FS.ErrnoError(29)}}"
