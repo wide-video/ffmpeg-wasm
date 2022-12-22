@@ -38,6 +38,8 @@ if [ "$FFMPEG_LGPL" = false ] ; then
     FLAGS+=(
         -lx264
         -lx265
+		-Llibpostproc
+		-lpostproc
     )
 fi
 
