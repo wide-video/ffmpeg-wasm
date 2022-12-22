@@ -1,6 +1,6 @@
 # WebAssembly port of FFmpeg
 
-This repository hosts scripts and commands to build WebAssembly port of FFmpeg powering [wide.video | Free Online Video Editor](https://wide.video) and [ffmpeg.wide.video | FFmpeg Online](https://ffmpeg.wide.video).
+This repository hosts scripts and commands to build WebAssembly port of FFmpeg powering [**wide.video** | Free Online Video Editor](https://wide.video) and [**ffmpeg.wide.video** | FFmpeg Online](https://ffmpeg.wide.video).
 
 ## Build
 
