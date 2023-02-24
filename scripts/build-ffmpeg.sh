@@ -11,7 +11,7 @@ mkdir -p $WASM_DIR
 FLAGS=(
   $CFLAGS
   -I. -I./fftools -I$BUILD_DIR/include
-  -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibswscale -Llibswresample -Lrubberband -Lsamplerate -Lflite -LSvtAv1Dec -LSvtAv1Enc -L$BUILD_DIR/lib
+  -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibswscale -Llibswresample -Lrubberband -Lsamplerate -Lflite -LSvtAv1Dec -LSvtAv1Enc -Llibstvav1 -L$BUILD_DIR/lib
   -Wno-deprecated-declarations -Wno-pointer-sign -Wno-implicit-int-float-conversion -Wno-switch -Wno-parentheses -Qunused-arguments
   -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lm 
   -lSvtAv1Dec -lSvtAv1Enc -lopenh264 -lkvazaar -lvpx -lmp3lame -lvorbis -lvorbisenc -lvorbisfile -logg -ltheora -ltheoraenc -ltheoradec -lz -lopus -lwebp -lwebpmux -lsharpyuv -lrubberband -lsamplerate
@@ -31,6 +31,10 @@ FLAGS=(
   -s PROXY_TO_PTHREAD=1
   -s STACK_SIZE=5MB                     # required since 3.1.27 (Uncaught Infinity runtime error)
   -s DEFAULT_PTHREAD_STACK_SIZE=2MB     # required since 3.1.27 (Uncaught Infinity runtime error)
+
+-s EXCEPTION_STACK_TRACES=1
+-fexceptions
+
   -pthread
   -o $OUTPUT_PATH
 )
