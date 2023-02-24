@@ -10,6 +10,7 @@ CM_FLAGS=(
   -DBUILD_SHARED_LIBS=OFF
   -DCMAKE_BUILD_TYPE=Release
   -DBUILD_TESTING=OFF
+  -DBUILD_APPS=OFF
 
   # wasm
   -DCMAKE_HAVE_LIBC_PTHREAD=On
@@ -30,10 +31,9 @@ rm -rf $LIB_PATH/Build/SvtAv1Enc.pc
 cd $LIB_PATH
 cd Build
 
-#emmake cmake .. -G"Unix Makefiles" ${CM_FLAGS[@]} \
-#    -DCMAKE_C_FLAGS="$CFLAGS"
-    #-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
-    #-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS"
-#emmake make clean
+emmake cmake .. -G"Unix Makefiles" ${CM_FLAGS[@]} \
+    -DCMAKE_C_FLAGS="$CFLAGS" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS"
+emmake make clean -j
 emmake make install
 cd $ROOT_DIR
