@@ -31,10 +31,6 @@ FLAGS=(
   -s PROXY_TO_PTHREAD=1
   -s STACK_SIZE=5MB                     # required since 3.1.27 (Uncaught Infinity runtime error)
   -s DEFAULT_PTHREAD_STACK_SIZE=2MB     # required since 3.1.27 (Uncaught Infinity runtime error)
-
--s EXCEPTION_STACK_TRACES=1
--fexceptions
-
   -pthread
   -o $OUTPUT_PATH
 )
