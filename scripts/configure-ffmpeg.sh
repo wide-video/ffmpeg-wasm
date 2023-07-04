@@ -11,7 +11,6 @@ FLAGS=(
   --enable-cross-compile
   --enable-version3
   --enable-zlib
-  --enable-libaom
   --enable-libopenh264
   --enable-libkvazaar
   --enable-libvpx
@@ -20,6 +19,7 @@ FLAGS=(
   --enable-libvorbis
   --enable-libopus
   --enable-libwebp
+  --enable-libsvtav1
   --enable-librubberband
   --disable-x86asm
   --disable-inline-asm
