@@ -15,7 +15,7 @@ FLAGS=(
   -Wno-deprecated-declarations -Wno-pointer-sign -Wno-implicit-int-float-conversion -Wno-switch -Wno-parentheses -Qunused-arguments
   -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lm 
   -lSvtAv1Dec -lSvtAv1Enc -lopenh264 -lkvazaar -lvpx -lmp3lame -lvorbis -lvorbisenc -lvorbisfile -logg -ltheora -ltheoraenc -ltheoradec -lz -lopus -lwebp -lwebpmux -lsharpyuv -lrubberband -lsamplerate
-  fftools/cmdutils.c fftools/ffmpeg.c fftools/ffmpeg_demux.c fftools/ffmpeg_filter.c fftools/ffmpeg_hw.c fftools/ffmpeg_mux.c fftools/ffmpeg_mux_init.c fftools/ffmpeg_opt.c fftools/objpool.c fftools/opt_common.c fftools/sync_queue.c fftools/thread_queue.c
+  fftools/cmdutils.c fftools/ffmpeg.c fftools/ffmpeg_dec.c fftools/ffmpeg_demux.c fftools/ffmpeg_enc.c fftools/ffmpeg_filter.c fftools/ffmpeg_hw.c fftools/ffmpeg_mux.c fftools/ffmpeg_mux_init.c fftools/ffmpeg_opt.c fftools/objpool.c fftools/opt_common.c fftools/sync_queue.c fftools/thread_queue.c
   -lworkerfs.js
   -s USE_SDL=2
   -s INVOKE_RUN=0
@@ -51,7 +51,7 @@ fi
 
 echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
-    emmake make -j && \
+    emmake make -j4 && \
     emcc "${FLAGS[@]}")
 
 echo "emcc ${FLAGS[@]}" > $INFO_FILE
