@@ -8,6 +8,11 @@
 	url = https://github.com/wide-video/ffmpeg
 	branch = wide.video
 	ignore = all
+[submodule "modules/aom"]
+	path = modules/aom
+	url = https://github.com/wide-video/aom
+	branch = wide.video
+	ignore = all
 [submodule "modules/kvazaar"]
 	path = modules/kvazaar
 	url = https://github.com/wide-video/kvazaar

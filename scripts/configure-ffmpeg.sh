@@ -11,6 +11,7 @@ FLAGS=(
   --enable-cross-compile
   --enable-version3
   --enable-zlib
+  --enable-libaom --disable-encoder=libaom_av1
   --enable-libopenh264
   --enable-libkvazaar
   --enable-libvpx
