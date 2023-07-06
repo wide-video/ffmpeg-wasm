@@ -4,7 +4,7 @@ set -eo pipefail
 source $(dirname $0)/var.sh
 
 LIB_PATH=modules/ffmpeg
-INFO_FILE=$WASM_DIR/info.txt
+INFO_FILE=$WASM_DIR/$OUTPUT_FILENAME.txt
 
 mkdir -p $WASM_DIR
 
@@ -16,7 +16,6 @@ FLAGS=(
   -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibswscale -Llibswresample -L$BUILD_DIR/lib
   -Wno-deprecated-declarations -Wno-pointer-sign -Wno-implicit-int-float-conversion -Wno-switch -Wno-parentheses -Qunused-arguments
   -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lm
-  fftools/cmdutils.c fftools/ffmpeg.c fftools/ffmpeg_dec.c fftools/ffmpeg_demux.c fftools/ffmpeg_enc.c fftools/ffmpeg_filter.c fftools/ffmpeg_hw.c fftools/ffmpeg_mux.c fftools/ffmpeg_mux_init.c fftools/ffmpeg_opt.c fftools/objpool.c fftools/opt_common.c fftools/sync_queue.c fftools/thread_queue.c
 
   # Features
   -laom
@@ -33,6 +32,9 @@ FLAGS=(
   -lwebp -lwebpmux
   -lsharpyuv
   -lrubberband -lsamplerate -Lrubberband -Lsamplerate
+
+  # Goes after `-l -L` switches see: https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2052
+  fftools/cmdutils.c fftools/ffmpeg.c fftools/ffmpeg_dec.c fftools/ffmpeg_demux.c fftools/ffmpeg_enc.c fftools/ffmpeg_filter.c fftools/ffmpeg_hw.c fftools/ffmpeg_mux.c fftools/ffmpeg_mux_init.c fftools/ffmpeg_opt.c fftools/objpool.c fftools/opt_common.c fftools/sync_queue.c fftools/thread_queue.c
 
   # Emscripten
   -lworkerfs.js
