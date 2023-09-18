@@ -24,14 +24,14 @@ emmake make -C $LIB_PATH1 install
 
 LIB_PATH2=modules/libsndfile
 (cd $LIB_PATH2 && \
-  emconfigure ./autogen.sh && \
+  emconfigure autoreconf -vif && \
   CFLAGS=$CFLAGS emconfigure ./configure "${CONF_FLAGS[@]}")
 emmake make -C $LIB_PATH2 clean
 emmake make -C $LIB_PATH2 install
 
 LIB_PATH=modules/rubberband
 (CPATH="${BUILD_DIR}/include" \
-  OPTFLAGS="${OPTIM_FLAGS} -DNDEBUG -ffast-math -ftree-vectorize" \
+  OPTFLAGS="${CFLAGS} -DNDEBUG -ffast-math -ftree-vectorize" \
   emmake make -C $LIB_PATH -f otherbuilds/Makefile.em clean distclean default)
 
 cp $LIB_PATH/lib/librubberband.a $BUILD_DIR/lib

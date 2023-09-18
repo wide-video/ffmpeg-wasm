@@ -21,8 +21,8 @@
 3. `git push origin --delete wide.video-tmp` (delete remote branch)
 4. `git branch -m wide.video` (rename current branch *wide.video-tmp* to *wide.video*)
 5. `git push -f origin wide.video`
-6. `git tag wv1.2.3`
-7. `git push origin wv1.2.3`
+6. `git tag wv0.7.7`
+7. `git push origin wv0.7.7`
 
 ## 4 ffmpeg-wasm repo
 

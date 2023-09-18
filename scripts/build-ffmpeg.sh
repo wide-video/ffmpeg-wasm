@@ -19,7 +19,7 @@ FLAGS=(
 
   # Features
   -laom
-  -lSvtAv1Dec -lSvtAv1Enc -LSvtAv1Dec -LSvtAv1Enc -Llibstvav1
+  -lSvtAv1Enc -LSvtAv1Enc -Llibstvav1
   -lopenh264
   -lkvazaar
   -lvpx
