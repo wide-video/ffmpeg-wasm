@@ -16,7 +16,6 @@ CONF_FLAGS=(
   --disable-dependency-tracking                      # speed up one-time build
   --extra-cflags="$CFLAGS"                           # flags to use pthread and code optimization
   --extra-cxxflags="$CXXFLAGS"                       # flags to use pthread and code optimization
-  ${EXTRA_CONF_FLAGS-}
 )
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 (cd $LIB_PATH && emconfigure ./configure "${CONF_FLAGS[@]}")

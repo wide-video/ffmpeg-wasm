@@ -9,11 +9,11 @@ INFO_FILE=$WASM_DIR/$OUTPUT_FILENAME.txt
 mkdir -p $WASM_DIR
 
 FLAGS=(
-  $CFLAGS
+  $LDFLAGS
 
   # Common
   -I. -I./fftools -I$BUILD_DIR/include
-  -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibswscale -Llibswresample -L$BUILD_DIR/lib
+  -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibswscale -Llibswresample
   -Wno-deprecated-declarations -Wno-pointer-sign -Wno-implicit-int-float-conversion -Wno-switch -Wno-parentheses -Qunused-arguments
   -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lm
 
@@ -39,6 +39,7 @@ FLAGS=(
   # Emscripten
   -lworkerfs.js
   -s USE_SDL=2
+  -s WASM_BIGINT
   -s INVOKE_RUN=0
   -s EXIT_RUNTIME=1
   -s MODULARIZE=1

@@ -11,7 +11,6 @@ CONF_FLAGS=(
   --disable-cli                 # disable cli tools
   --disable-asm                 # disable asm optimization
   --extra-cflags="$CFLAGS"      # flags to use pthread and code optimization
-  ${EXTRA_CONF_FLAGS-}
 )
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 (cd $LIB_PATH && emconfigure ./configure "${CONF_FLAGS[@]}")

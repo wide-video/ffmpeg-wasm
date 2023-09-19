@@ -37,6 +37,9 @@ rm -rf $LIB_PATH/CMakeFiles
 rm -rf $LIB_PATH/$CMBUILD_DIR
 mkdir -p $LIB_PATH/$CMBUILD_DIR
 
-(cd $LIB_PATH/$CMBUILD_DIR && emmake cmake .. ${CM_FLAGS[@]} -G "Unix Makefiles")
+(cd $LIB_PATH/$CMBUILD_DIR && emmake cmake .. ${CM_FLAGS[@]} \
+  -DAOM_EXTRA_C_FLAGS="$CFLAGS" \
+  -DAOM_EXTRA_CXX_FLAGS="$CXXFLAGS" \
+  -G"Unix Makefiles")
 emmake make -C $LIB_PATH/$CMBUILD_DIR clean
 emmake make -C $LIB_PATH/$CMBUILD_DIR install -j

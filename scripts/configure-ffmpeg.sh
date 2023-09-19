@@ -31,10 +31,10 @@ FLAGS=(
   --disable-runtime-cpudetect
   --disable-autodetect    # disable external libraries auto detect
   --extra-cflags="$CFLAGS"
-  --extra-cxxflags="$CFLAGS"
+  --extra-cxxflags="$CXXFLAGS"
   --extra-ldflags="$LDFLAGS"
   --pkg-config-flags="--static"
-  --nm="llvm-nm"
+  --nm=emnm
   --ar=emar
   --ranlib=emranlib
   --cc=emcc
