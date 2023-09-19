@@ -74,4 +74,3 @@ EOF
 emmake make install -j
 
 cd $ROOT_DIR
-#cp $LIB_PATH/x265.pc $BUILD_DIR/lib/pkgconfig
