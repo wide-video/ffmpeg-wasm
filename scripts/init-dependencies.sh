@@ -24,6 +24,7 @@ fi
 
 cd modules/emsdk/
 git pull
-./emsdk install 3.1.46
-./emsdk activate 3.1.46
+# figure out the latest https://github.com/emscripten-core/emsdk/issues/547#issuecomment-1359134381
+./emsdk install 3.1.47
+./emsdk activate 3.1.47
 cd ../../
