@@ -34,12 +34,27 @@ FLAGS=(
   -lrubberband -lsamplerate -Lrubberband -Lsamplerate
 
   # Goes after `-l -L` switches see: https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2052
-  fftools/cmdutils.c fftools/ffmpeg.c fftools/ffmpeg_dec.c fftools/ffmpeg_demux.c fftools/ffmpeg_enc.c fftools/ffmpeg_filter.c fftools/ffmpeg_hw.c fftools/ffmpeg_mux.c fftools/ffmpeg_mux_init.c fftools/ffmpeg_opt.c fftools/objpool.c fftools/opt_common.c fftools/sync_queue.c fftools/thread_queue.c
+  fftools/cmdutils.c
+  fftools/ffmpeg.c
+  fftools/ffmpeg_dec.c
+  fftools/ffmpeg_demux.c
+  fftools/ffmpeg_enc.c
+  fftools/ffmpeg_filter.c
+  fftools/ffmpeg_hw.c
+  fftools/ffmpeg_mux.c
+  fftools/ffmpeg_mux_init.c
+  fftools/ffmpeg_opt.c
+  fftools/ffmpeg_sched.c
+  fftools/objpool.c
+  fftools/opt_common.c
+  fftools/sync_queue.c
+  fftools/thread_queue.c
 
   # Emscripten
   -lworkerfs.js
   -s USE_SDL=2
   -s WASM_BIGINT
+#  -s MALLOC=mimalloc                   # available since 3.1.50
   -s INVOKE_RUN=0
   -s EXIT_RUNTIME=1
   -s MODULARIZE=1
@@ -53,7 +68,6 @@ FLAGS=(
   -s PROXY_TO_PTHREAD=1
   -s STACK_SIZE=5MB                     # required since 3.1.27 (Uncaught Infinity runtime error)
   -s DEFAULT_PTHREAD_STACK_SIZE=2MB     # required since 3.1.27 (Uncaught Infinity runtime error)
-  -pthread
   -o $OUTPUT_PATH
 )
 

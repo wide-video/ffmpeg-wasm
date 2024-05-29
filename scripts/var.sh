@@ -14,7 +14,7 @@ TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmak
 OPTIM_FLAGS="-O3"
 #OPTIM_FLAGS="-Og -g" # `-Og` no optimization, `-g` debug info enabled
 
-CFLAGS_BASE="$OPTIM_FLAGS -I$BUILD_DIR/include -s USE_PTHREADS=1"
+CFLAGS_BASE="$OPTIM_FLAGS -I$BUILD_DIR/include -pthread"
 
 OUTPUT_FILENAME="ffmpeg"
 

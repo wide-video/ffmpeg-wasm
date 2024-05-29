@@ -28,8 +28,7 @@ export FFMPEG_LGPL=true                  # release.sh
 export FFMPEG_SKIP_LIBS=false            # release.sh
 ./scripts/clean.sh                       # release.sh
 ./scripts/build.sh                       # release.sh
-	./scripts/init-dependencies.sh       # build.sh
-	source ./modules/emsdk/emsdk_env.sh  # build.sh
+	./scripts/init-emscripten.sh         # build.sh
 	./scripts/build-zlib.sh              # build.sh
 	./scripts/configure-ffmpeg.sh        # build.sh
 	./scripts/build-ffmpeg.sh            # build.sh
@@ -42,8 +41,8 @@ Reattach stdin for exited container:
 
 ```shell
 docker ps -q -l              # find container ID (or discover via Docker desktop)
-docker start 8275dbd4e7a9    # restart in the background
-docker attach 8275dbd4e7a9   # reattach the terminal & stdin
+docker start c72f63f99f92    # restart in the background
+docker attach c72f63f99f92   # reattach the terminal & stdin
 ```
 
 ## Known Issues

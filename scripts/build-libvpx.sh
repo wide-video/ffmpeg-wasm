@@ -14,10 +14,14 @@ CONF_FLAGS=(
   --disable-docs                                     # not to build docs
   --disable-unit-tests                               # not to do unit tests
   --disable-dependency-tracking                      # speed up one-time build
+  --disable-shared
+  --disable-codec-srcs
+  --disable-debug-libs
+
   --extra-cflags="$CFLAGS"                           # flags to use pthread and code optimization
   --extra-cxxflags="$CXXFLAGS"                       # flags to use pthread and code optimization
 )
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 (cd $LIB_PATH && emconfigure ./configure "${CONF_FLAGS[@]}")
 emmake make -C $LIB_PATH clean
-emmake make -C $LIB_PATH install -j
+emmake make -C $LIB_PATH install STRIP=emstrip -j

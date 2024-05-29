@@ -4,11 +4,7 @@ set -eo pipefail
 
 SCRIPT_ROOT=$(dirname $0)
 
-$SCRIPT_ROOT/init-dependencies.sh
-
-source ./modules/emsdk/emsdk_env.sh
-
-emcc -v
+$SCRIPT_ROOT/init-emscripten.sh
 
 if [ "$FFMPEG_SKIP_LIBS" = false ] ; then
     $SCRIPT_ROOT/build-zlib.sh
