@@ -1,0 +1,35 @@
+<body>
+    <p>Watch console log.</p>
+    <script id="worker" type="javascript/worker">
+    self.onmessage = async (event) => {
+        const {args, wasmUrl, ffmpegUrl, ffmpegWorkerUrl} = event.data;
+        importScripts(ffmpegUrl);
+    
+        const module = await createFFmpeg({
+            printErr:console.log,
+            locateFile:url => {
+                if(url.endsWith(".wasm")) return wasmUrl;
+                if(url.endsWith(".worker.js")) return ffmpegWorkerUrl;
+                return url;},
+            mainScriptUrlOrBlob:ffmpegUrl});
+        
+        module.callMain(args);
+    };
+    </script>
+    <script>
+    (async () => {
+    
+    if(typeof SharedArrayBuffer === "undefined")
+        return document.body.innerHTML = "SharedArrayBuffer is not available. Run <code style='background:#ccc'>chrome --enable-features=SharedArrayBuffer</code> or follow <a href='https://web.dev/cross-origin-isolation-guide/'>A guide to enable cross-origin isolation</a>.";
+    
+    const wasmUrl = new URL("ffmpeg-lgpl-simd.wasm", document.location).href;
+    const ffmpegUrl = new URL("ffmpeg-lgpl-simd.js", document.location).href;
+    const ffmpegWorkerUrl = new URL("ffmpeg-lgpl-simd.worker.js", document.location).href;
+    const args = ["-codecs"];
+    const workerBlob = new Blob([document.querySelector('#worker').textContent], {type:"text/javascript"});
+    const worker = new Worker(URL.createObjectURL(workerBlob));
+    worker.postMessage({args, wasmUrl, ffmpegUrl, ffmpegWorkerUrl});
+    
+    })()
+    </script>
+    </body>
