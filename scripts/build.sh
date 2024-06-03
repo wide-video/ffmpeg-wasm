@@ -4,7 +4,7 @@ set -eo pipefail
 
 SCRIPT_ROOT=$(dirname $0)
 
-$SCRIPT_ROOT/init-emscripten.sh
+source $SCRIPT_ROOT/init-emscripten.sh
 
 if [ "$FFMPEG_SKIP_LIBS" = false ] ; then
     $SCRIPT_ROOT/build-zlib.sh

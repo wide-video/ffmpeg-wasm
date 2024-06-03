@@ -41,8 +41,8 @@ Reattach stdin for exited container:
 
 ```shell
 docker ps -q -l              # find container ID (or discover via Docker desktop)
-docker start 8c11e13c2dd5    # restart in the background
-docker attach 8c11e13c2dd5   # reattach the terminal & stdin
+docker start dd3dbe04a7e5    # restart in the background
+docker attach dd3dbe04a7e5   # reattach the terminal & stdin
 ```
 
 ## Known Issues
