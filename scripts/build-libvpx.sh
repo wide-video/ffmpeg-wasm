@@ -18,6 +18,13 @@ CONF_FLAGS=(
   --disable-codec-srcs
   --disable-debug-libs
 
+  # https://github.com/wide-video/libvpx/blob/wide.video/test/vp9_c_vs_simd_encode.sh#L234
+  # fixes yuv420p10le pixel format
+  --enable-postproc
+  --enable-vp9-postproc
+  --enable-vp9-temporal-denoising
+  --enable-vp9-highbitdepth
+
   --extra-cflags="$CFLAGS"                           # flags to use pthread and code optimization
   --extra-cxxflags="$CXXFLAGS"                       # flags to use pthread and code optimization
 )
