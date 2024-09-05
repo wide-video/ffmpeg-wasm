@@ -11,7 +11,7 @@ BUILD_DIR=$ROOT_DIR/build
 EM_PKG_CONFIG_PATH=$BUILD_DIR/lib/pkgconfig
 TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
 
-OPTIM_FLAGS="-O3"
+OPTIM_FLAGS="-O3 -flto"
 #OPTIM_FLAGS="-Og -g" # `-Og` no optimization, `-g` debug info enabled
 
 CFLAGS_BASE="$OPTIM_FLAGS -I$BUILD_DIR/include -pthread"

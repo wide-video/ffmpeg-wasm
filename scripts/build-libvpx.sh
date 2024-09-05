@@ -25,8 +25,8 @@ CONF_FLAGS=(
   --enable-vp9-temporal-denoising
   --enable-vp9-highbitdepth
 
-  --extra-cflags="$CFLAGS"                           # flags to use pthread and code optimization
-  --extra-cxxflags="$CXXFLAGS"                       # flags to use pthread and code optimization
+  --extra-cflags="$CFLAGS -fno-lto"                  # flags to use pthread and code optimization
+  --extra-cxxflags="$CXXFLAGS -fno-lto"              # flags to use pthread and code optimization
 )
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 (cd $LIB_PATH && emconfigure ./configure "${CONF_FLAGS[@]}")

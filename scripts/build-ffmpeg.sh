@@ -54,7 +54,8 @@ FLAGS=(
   -lworkerfs.js
   -s USE_SDL=2
   -s WASM_BIGINT
-#  -s MALLOC=mimalloc                   # available since 3.1.50
+  -s MALLOC=mimalloc                   # available since 3.1.50
+#  -s EXPORT_ES6=1                     # https://github.com/emscripten-core/emscripten/issues/22508
   -s INVOKE_RUN=0
   -s EXIT_RUNTIME=1
   -s MODULARIZE=1

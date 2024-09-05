@@ -19,9 +19,11 @@ if [ "$FFMPEG_SKIP_LIBS" = false ] ; then
     $SCRIPT_ROOT/build-vorbis.sh
     $SCRIPT_ROOT/build-openh264.sh
     $SCRIPT_ROOT/build-kvazaar.sh
+    $SCRIPT_ROOT/build-svtav1.sh
+
+    # GPL
     $SCRIPT_ROOT/build-x264.sh
     $SCRIPT_ROOT/build-x265.sh
-    $SCRIPT_ROOT/build-svtav1.sh
 fi
 
 $SCRIPT_ROOT/configure-ffmpeg.sh

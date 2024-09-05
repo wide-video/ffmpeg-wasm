@@ -11,8 +11,9 @@
 ## 2 ffmpeg-wasm repo
 
 1. update *ffmpeg-wasm/.gitmodules* to use *wide.video-tmp* branch
-2. update *ffmpeg-wasm/scripts/init-dependencies.sh* to use latest emscripten
-3. clean, build test it with app (see *Build* section on top)
+2. `git submodule sync --recursive`
+3. `git submodule update --init --recursive --remote`
+4. clean, build test it with app (see *Build* section on top)
 
 ## 3 ffmpeg repo
 
@@ -21,11 +22,11 @@
 3. `git push origin --delete wide.video-tmp` (delete remote branch)
 4. `git branch -m wide.video` (rename current branch *wide.video-tmp* to *wide.video*)
 5. `git push -f origin wide.video`
-6. `git tag wv0.8.0`
-7. `git push origin wv0.8.0`
+6. `git tag wv0.9.2`
+7. `git push origin wv0.9.2`
 
 ## 4 ffmpeg-wasm repo
 
 1. update *ffmpeg-wasm/.gitmodules* to use *wide.video* branch
-2. `git tag 1.2.3`
-3. `git push origin 1.2.3`
+2. `git tag 0.9.2`
+3. `git push origin 0.9.2`
