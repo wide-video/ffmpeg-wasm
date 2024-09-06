@@ -56,6 +56,7 @@ FLAGS=(
   -s WASM_BIGINT
   -s MALLOC=mimalloc                   # available since 3.1.50
 #  -s EXPORT_ES6=1                     # https://github.com/emscripten-core/emscripten/issues/22508
+#  -s STRICT=1                         # 3.1.65 wasm-ld: error: lto.tmp: undefined symbol: __syscall_geteuid32
   -s INVOKE_RUN=0
   -s EXIT_RUNTIME=1
   -s MODULARIZE=1

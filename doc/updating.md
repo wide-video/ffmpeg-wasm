@@ -5,7 +5,7 @@
 1. `git clone git@github.com:wide-video/ffmpeg.git`
 2. `git remote add ffmpeg git@github.com:FFmpeg/FFmpeg.git`
 3. `git fetch --all`
-4. `git checkout -b wide.video-tmp ea84eb2`(create branch named *wide.video-tmp* based on latest from ffmpeg origin)
+4. `git checkout -b wide.video-tmp 2a6f847`(create branch named *wide.video-tmp* based on latest from ffmpeg origin)
 5. `git push origin wide.video-tmp`
 
 ## 2 ffmpeg-wasm repo
