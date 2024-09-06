@@ -25,8 +25,10 @@ CONF_FLAGS=(
   --enable-vp9-temporal-denoising
   --enable-vp9-highbitdepth
 
-  --extra-cflags="$CFLAGS -fno-lto"                  # flags to use pthread and code optimization
-  --extra-cxxflags="$CXXFLAGS -fno-lto"              # flags to use pthread and code optimization
+  # https://github.com/emscripten-core/emscripten/issues/22524
+  # disables `-flto`
+  --extra-cflags="$CFLAGS -fno-lto"
+  --extra-cxxflags="$CXXFLAGS -fno-lto"
 )
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 (cd $LIB_PATH && emconfigure ./configure "${CONF_FLAGS[@]}")
