@@ -11,29 +11,19 @@ BUILD_DIR=$ROOT_DIR/build
 EM_PKG_CONFIG_PATH=$BUILD_DIR/lib/pkgconfig
 TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
 
-OPTIM_FLAGS="-O3 -flto"
-#OPTIM_FLAGS="-Og -g" # `-Og` no optimization, `-g` debug info enabled
-
-CFLAGS_BASE="$OPTIM_FLAGS -I$BUILD_DIR/include -pthread"
+# `-Og` -> no optimization
+# `-g` -> debug info enabled
+# `-mavx` -> https://github.com/emscripten-core/emscripten/issues/23138
+CFLAGS="-O3 -flto -I$BUILD_DIR/include -pthread -msimd128"
 
 OUTPUT_FILENAME="ffmpeg"
-
 if [ "$FFMPEG_LGPL" = true ] ; then
     OUTPUT_FILENAME="$OUTPUT_FILENAME-lgpl"
 else
     OUTPUT_FILENAME="$OUTPUT_FILENAME-gpl"
 fi
-
-if [ "$FFMPEG_SIMD" = true ] ; then
-    CFLAGS="$CFLAGS_BASE -msimd128"
-	OUTPUT_FILENAME="$OUTPUT_FILENAME-simd"
-else
-    CFLAGS="$CFLAGS_BASE"
-fi
-
 OUTPUT_PATH=$WASM_DIR/$OUTPUT_FILENAME.js
 OUTPUT_PATH_WV=$WASM_DIR/$OUTPUT_FILENAME-wv.js
-OUTPUT_PATH_WORKER=$WASM_DIR/$OUTPUT_FILENAME.worker.js
 
 export CFLAGS=$CFLAGS
 export CXXFLAGS=$CFLAGS

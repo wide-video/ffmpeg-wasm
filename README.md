@@ -23,7 +23,6 @@ Release script further executes configuration and build of each submodule, which
 
 ```shell
 sudo -s
-export FFMPEG_SIMD=true                  # release.sh
 export FFMPEG_LGPL=true                  # release.sh
 export FFMPEG_SKIP_LIBS=false            # release.sh
 ./scripts/clean.sh                       # release.sh

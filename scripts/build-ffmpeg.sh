@@ -12,7 +12,7 @@ FLAGS=(
   $LDFLAGS
 
   # Common
-  -I. -I./fftools -I$BUILD_DIR/include
+  -I. -I./fftools -I./compat/stdbit -I$BUILD_DIR/include
   -Llibavcodec -Llibavdevice -Llibavfilter -Llibavformat -Llibavresample -Llibavutil -Llibswscale -Llibswresample
   -Wno-deprecated-declarations -Wno-pointer-sign -Wno-implicit-int-float-conversion -Wno-switch -Wno-parentheses -Qunused-arguments
   -lavdevice -lavfilter -lavformat -lavcodec -lswresample -lswscale -lavutil -lm
