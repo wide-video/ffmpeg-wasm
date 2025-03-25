@@ -7,7 +7,8 @@ LIB_PATH=modules/ffmpeg
 
 FLAGS=(
   --target-os=none        # use none to prevent any os specific configurations
-  --arch=x86_32           # use x86_32 to achieve minimal architectural optimization
+  --arch=wasm32
+  --cpu=generic
   --enable-cross-compile
   --enable-version3
   --enable-zlib
@@ -22,8 +23,6 @@ FLAGS=(
   --enable-libwebp
   --enable-libsvtav1
   --enable-librubberband
-  --disable-x86asm
-  --disable-inline-asm
   --disable-stripping
   --disable-programs      # disable programs build (incl. ffplay, ffprobe & ffmpeg)
   --disable-doc

@@ -3,17 +3,6 @@
 set -euo pipefail
 source $(dirname $0)/var.sh
 
-replace()
-{
-	if ! grep -qF "$1" "$3"; then
-		echo "$3 does not contain expected $1"
-		exit 1
-	fi
-	ESCAPED_FROM=$(printf '%s\n' "$1" | sed -e 's/[]\/$*.^[]/\\&/g');
-	ESCAPED_TO=$(printf '%s\n' "$2" | sed -e 's/[\/&]/\\&/g');
-	sed -i -e "s/$ESCAPED_FROM/$ESCAPED_TO/g" $3
-}
-
 LIB_PATH=modules/svtav1
 CM_FLAGS=(
   -DCMAKE_INSTALL_PREFIX=$BUILD_DIR
@@ -35,15 +24,12 @@ rm -rf $LIB_PATH/Bin
 rm -rf $LIB_PATH/Build/CMakeFiles
 rm -rf $LIB_PATH/Build/Source
 rm -rf $LIB_PATH/Build/third_party
-rm -rf $LIB_PATH/Build/cmake_install.cmake
 rm -rf $LIB_PATH/Build/CMakeCache.txt
+rm -rf $LIB_PATH/Build/cmake_install.cmake
+rm -rf $LIB_PATH/Build/install_manifest.txt
 rm -rf $LIB_PATH/Build/Makefile
 rm -rf $LIB_PATH/Build/SvtAv1Dec.pc
 rm -rf $LIB_PATH/Build/SvtAv1Enc.pc
-
-# removing hardcoded stack-protector
-# https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2108
-replace "check_both_flags_add(-fstack-protector-strong)" "" $LIB_PATH/CMakeLists.txt
 
 # https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Build-Guide.md
 cd $LIB_PATH

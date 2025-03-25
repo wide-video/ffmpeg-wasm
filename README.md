@@ -27,7 +27,7 @@ export FFMPEG_LGPL=true                  # release.sh
 export FFMPEG_SKIP_LIBS=false            # release.sh
 ./scripts/clean.sh                       # release.sh
 ./scripts/build.sh                       # release.sh
-	./scripts/init-emscripten.sh         # build.sh
+	source scripts/init-emscripten.sh    # build.sh
 	./scripts/build-zlib.sh              # build.sh
 	./scripts/configure-ffmpeg.sh        # build.sh
 	./scripts/build-ffmpeg.sh            # build.sh

@@ -37,7 +37,8 @@ LIB_PATH=modules/rubberband
 cp $LIB_PATH/lib/librubberband.a $BUILD_DIR/lib
 cp $LIB_PATH/rubberband.pc.in $EM_PKG_CONFIG_PATH/rubberband.pc
 sed -i -e 's,%PREFIX%,'"$BUILD_DIR"',g' $EM_PKG_CONFIG_PATH/rubberband.pc
-  
+
 mkdir -p $BUILD_DIR/include/rubberband
-cp $LIB_PATH/rubberband/RubberBandStretcher.h $BUILD_DIR/include/rubberband/RubberBandStretcher.h
 cp $LIB_PATH/rubberband/rubberband-c.h $BUILD_DIR/include/rubberband/rubberband-c.h
+cp $LIB_PATH/rubberband/RubberBandStretcher.h $BUILD_DIR/include/rubberband/RubberBandStretcher.h
+cp $LIB_PATH/rubberband/RubberBandLiveShifter.h $BUILD_DIR/include/rubberband/RubberBandLiveShifter.h

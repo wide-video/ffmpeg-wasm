@@ -13,8 +13,7 @@ TOOLCHAIN_FILE=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmak
 
 # `-Og` -> no optimization
 # `-g` -> debug info enabled
-# `-mavx` -> https://github.com/emscripten-core/emscripten/issues/23138
-CFLAGS="-O3 -flto -I$BUILD_DIR/include -pthread -msimd128"
+CFLAGS="-O3 -flto -I$BUILD_DIR/include -pthread -msimd128 -mavx2"
 
 OUTPUT_FILENAME="ffmpeg"
 if [ "$FFMPEG_LGPL" = true ] ; then

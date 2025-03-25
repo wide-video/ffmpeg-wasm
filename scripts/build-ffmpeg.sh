@@ -29,8 +29,7 @@ FLAGS=(
   -ltheora -ltheoraenc -ltheoradec
   -lz
   -lopus
-  -lwebp -lwebpmux
-  -lsharpyuv
+  -lwebp -lwebpmux -lsharpyuv
   -lrubberband -lsamplerate -Lrubberband -Lsamplerate
 
   # Goes after `-l -L` switches see: https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2052
@@ -45,7 +44,6 @@ FLAGS=(
   fftools/ffmpeg_mux_init.c
   fftools/ffmpeg_opt.c
   fftools/ffmpeg_sched.c
-  fftools/objpool.c
   fftools/opt_common.c
   fftools/sync_queue.c
   fftools/thread_queue.c
@@ -63,7 +61,7 @@ FLAGS=(
   -s EXPORT_NAME="createFFmpeg"
   -s EXPORTED_FUNCTIONS="[_main, ___wasm_init_memory_flag]"
   -s EXPORTED_RUNTIME_METHODS="[callMain, FS, WORKERFS]"
-  -s INITIAL_MEMORY=128mb
+  -s INITIAL_MEMORY=96mb
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
   -s ENVIRONMENT=worker
