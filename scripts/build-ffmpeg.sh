@@ -8,6 +8,14 @@ INFO_FILE=$WASM_DIR/$OUTPUT_FILENAME.txt
 
 mkdir -p $WASM_DIR
 
+# In ffmpeg 8.0.0, fftools/resources/resman.c expects `extenrn const ...` made out of .css and .html files.
+# Not usre if this is needed for wasm runtime, but I can not figure out way to remove it in build time.
+# AI suggested to use xxd
+(cd $LIB_PATH/fftools/resources && xxd -n ff_graph_css_data -i graph.css > graph.css.c)
+(cd $LIB_PATH/fftools/resources && xxd -n ff_graph_css -i graph.css >> graph.css.c)
+(cd $LIB_PATH/fftools/resources && xxd -n ff_graph_html_data -i graph.html > graph.html.c)
+(cd $LIB_PATH/fftools/resources && xxd -n ff_graph_html -i graph.html >> graph.html.c)
+
 FLAGS=(
   $LDFLAGS
 
@@ -33,20 +41,8 @@ FLAGS=(
   -lrubberband -lsamplerate -Lrubberband -Lsamplerate
 
   # Goes after `-l -L` switches see: https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2052
-  fftools/cmdutils.c
-  fftools/ffmpeg.c
-  fftools/ffmpeg_dec.c
-  fftools/ffmpeg_demux.c
-  fftools/ffmpeg_enc.c
-  fftools/ffmpeg_filter.c
-  fftools/ffmpeg_hw.c
-  fftools/ffmpeg_mux.c
-  fftools/ffmpeg_mux_init.c
-  fftools/ffmpeg_opt.c
-  fftools/ffmpeg_sched.c
-  fftools/opt_common.c
-  fftools/sync_queue.c
-  fftools/thread_queue.c
+  # there used to be `fftools/ffmpeg.c fftools/ffmpeg_dec.c ...` but the list wen too long already
+  $(cd $LIB_PATH && find fftools -name "*.c" ! -name "ffplay.c" ! -name "ffplay_renderer.c" ! -name "ffprobe.c")
 
   # Emscripten
   -lworkerfs.js
@@ -60,7 +56,7 @@ FLAGS=(
   -s MODULARIZE=1
   -s EXPORT_NAME="createFFmpeg"
   -s EXPORTED_FUNCTIONS="[_main, ___wasm_init_memory_flag]"
-  -s EXPORTED_RUNTIME_METHODS="[callMain, FS, WORKERFS]"
+  -s EXPORTED_RUNTIME_METHODS="[callMain, FS, HEAPU32, WORKERFS]"
   -s INITIAL_MEMORY=96mb
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
@@ -76,8 +72,6 @@ if [ "$FFMPEG_LGPL" = false ] ; then
     FLAGS+=(
         -lx264
         -lx265
-        -Llibpostproc
-        -lpostproc
     )
 fi
 

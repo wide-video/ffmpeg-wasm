@@ -17,6 +17,8 @@ CONF_FLAGS=(
   --disable-shared
   --disable-codec-srcs
   --disable-debug-libs
+  --disable-runtime-cpu-detect                       # make sure libvpx’s configure doesn’t disable SIMD
+  --enable-multithread                               # not sure if needed, but seen used around the internets
 
   # https://github.com/wide-video/libvpx/blob/wide.video/test/vp9_c_vs_simd_encode.sh#L234
   # fixes yuv420p10le pixel format

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EMSDK_VERSION="4.0.5"
+EMSDK_VERSION="4.0.13"
 
 MODULE_ROOT=$(dirname $(dirname $0))/modules/emsdk
 

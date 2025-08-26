@@ -27,7 +27,12 @@ echo "CM_FLAGS=${CM_FLAGS[@]}"
 cd $LIB_PATH
 mkdir -p build
 cd build
-emmake cmake .. -DCMAKE_C_FLAGS="$CXXFLAGS" ${CM_FLAGS[@]}
+
+# common_sse2.h uses `#if defined(WEBP_USE_SSE2)` to define some variables
+# and some other .c/.h access these vars under `#if defined(WEBP_USE_SSE43)`,
+# however, during build, WEBP_USE_SSE4x is true while WEBP_USE_SSE2 is false.
+# Try removing the `-DWEBP_USE_SSE2` when next webp version is used.
+emmake cmake .. -DCMAKE_C_FLAGS="$CXXFLAGS -DWEBP_USE_SSE2" ${CM_FLAGS[@]}
 emmake make clean
 emmake make install
 cd $ROOT_DIR
