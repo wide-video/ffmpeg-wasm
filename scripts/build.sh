@@ -20,6 +20,7 @@ if [ "$FFMPEG_SKIP_LIBS" = false ] ; then
     $SCRIPT_ROOT/build-openh264.sh
     $SCRIPT_ROOT/build-kvazaar.sh
     $SCRIPT_ROOT/build-svtav1.sh
+    $SCRIPT_ROOT/build-zimg.sh
 
     # GPL
     $SCRIPT_ROOT/build-x264.sh

@@ -88,6 +88,10 @@
 	url = https://github.com/wide-video/x265
 	branch = wide.video
 	ignore = all
+[submodule "modules/zimg"]
+	path = modules/zimg
+	url = https://github.com/wide-video/zimg
+	branch = wide.video
 [submodule "modules/zlib"]
 	path = modules/zlib
 	url = https://github.com/wide-video/zlib

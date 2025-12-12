@@ -23,6 +23,7 @@ FLAGS=(
   --enable-libwebp
   --enable-libsvtav1
   --enable-librubberband
+  --enable-libzimg
   --disable-stripping
   --disable-programs      # disable programs build (incl. ffplay, ffprobe & ffmpeg)
   --disable-doc
