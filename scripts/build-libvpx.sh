@@ -35,4 +35,4 @@ CONF_FLAGS=(
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 (cd $LIB_PATH && emconfigure ./configure "${CONF_FLAGS[@]}")
 emmake make -C $LIB_PATH clean
-emmake make -C $LIB_PATH install STRIP=emstrip -j
+emmake make -C $LIB_PATH install STRIP=emstrip -j$(nproc)

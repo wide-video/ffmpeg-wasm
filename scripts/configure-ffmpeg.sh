@@ -13,6 +13,7 @@ FLAGS=(
   --enable-version3
   --enable-zlib
   --enable-libaom --disable-encoder=libaom_av1
+  --enable-libjxl
   --enable-libopenh264
   --enable-libkvazaar
   --enable-libvpx

@@ -36,6 +36,6 @@ cd $LIB_PATH
 cd Build
 
 emmake cmake .. -G"Unix Makefiles" "${CM_FLAGS[@]}"
-emmake make clean -j
-emmake make install
+emmake make clean -j$(nproc)
+emmake make install -j$(nproc)
 cd $ROOT_DIR

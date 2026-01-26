@@ -16,5 +16,5 @@ echo "CONF_FLAGS=${CONF_FLAGS[@]}"
   emconfigure ./autogen.sh && \
   emconfigure ./configure "${CONF_FLAGS[@]}")
 emmake make -C $LIB_PATH clean
-emmake make -C $LIB_PATH -j
+emmake make -C $LIB_PATH -j$(nproc)
 emmake make -C $LIB_PATH install

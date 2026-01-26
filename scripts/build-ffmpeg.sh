@@ -39,6 +39,7 @@ FLAGS=(
   -lopus
   -lwebp -lwebpmux -lsharpyuv
   -lrubberband -lsamplerate -Lrubberband -Lsamplerate
+  -ljxl -ljxl_cms -ljxl_threads -lhwy -lbrotlienc -lbrotlidec -lbrotlicommon
   -lzimg
 
   # Goes after `-l -L` switches see: https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2052
@@ -78,7 +79,7 @@ fi
 
 echo "FFMPEG_EM_FLAGS=${FLAGS[@]}"
 (cd $LIB_PATH && \
-    emmake make -j4 && \
+    emmake make -j$(nproc) && \
     emcc "${FLAGS[@]}")
 
 echo "emcc ${FLAGS[@]}" > $INFO_FILE

@@ -42,4 +42,4 @@ mkdir -p $LIB_PATH/$CMBUILD_DIR
   -DAOM_EXTRA_CXX_FLAGS="$CXXFLAGS" \
   -G"Unix Makefiles")
 emmake make -C $LIB_PATH/$CMBUILD_DIR clean
-emmake make -C $LIB_PATH/$CMBUILD_DIR install -j
+emmake make -C $LIB_PATH/$CMBUILD_DIR install -j$(nproc)

@@ -15,4 +15,4 @@ CONF_FLAGS=(
 echo "CONF_FLAGS=${CONF_FLAGS[@]}"
 (cd $LIB_PATH && emconfigure ./configure "${CONF_FLAGS[@]}")
 emmake make -C $LIB_PATH clean
-emmake make -C $LIB_PATH install-lib-static -j
+emmake make -C $LIB_PATH install-lib-static -j$(nproc)

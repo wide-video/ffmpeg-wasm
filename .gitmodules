@@ -23,6 +23,11 @@
 	url = https://github.com/wide-video/lame
 	branch = wide.video
 	ignore = all
+[submodule "modules/libjxl"]
+	path = modules/libjxl
+	url = https://github.com/wide-video/libjxl
+	branch = wide.video
+	ignore = all
 [submodule "modules/libsamplerate"]
 	path = modules/libsamplerate
 	url = https://github.com/wide-video/libsamplerate
