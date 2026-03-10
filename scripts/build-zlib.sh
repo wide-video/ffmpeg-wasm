@@ -4,19 +4,13 @@ set -euo pipefail
 source $(dirname $0)/var.sh
 
 LIB_PATH=modules/zlib
-CM_FLAGS=(
-  -DCMAKE_INSTALL_PREFIX=$BUILD_DIR
-  -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN_FILE
-  -DBUILD_SHARED_LIBS=OFF
-  -DSKIP_INSTALL_FILES=ON
+CONF_FLAGS=(
+  --prefix=$BUILD_DIR           # install library in a build directory for FFmpeg to include
+  --static
 )
-echo "CM_FLAGS=${CM_FLAGS[@]}"
-
-cd $LIB_PATH
-rm -rf build zconf.h
-mkdir -p build
-cd build
-emmake cmake .. -DCMAKE_C_FLAGS="$CXXFLAGS" ${CM_FLAGS[@]}
-emmake make clean
-emmake make install
-cd $ROOT_DIR
+echo "CONF_FLAGS=${CONF_FLAGS[@]}"
+(cd $LIB_PATH && \
+  emconfigure ./configure "${CONF_FLAGS[@]}")
+emmake make -C $LIB_PATH clean
+emmake make -C $LIB_PATH -j$(nproc)
+emmake make -C $LIB_PATH install
