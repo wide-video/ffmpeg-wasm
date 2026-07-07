@@ -59,6 +59,9 @@ FLAGS=(
   -s EXPORT_NAME="createFFmpeg"
   -s EXPORTED_FUNCTIONS="[_main, ___wasm_init_memory_flag]"
   -s EXPORTED_RUNTIME_METHODS="[callMain, FS, HEAPU32, WORKERFS]"
+
+                                        # emcripten 6.0.2 reuquires listed all that goes into createFFmpeg({...
+  -s INCOMING_MODULE_JS_API="[locateFile, mainScriptUrlOrBlob, onExit, printErr, stderr, stdin, stdout, wasmMemory]"
   -s INITIAL_MEMORY=96mb
   -s ALLOW_MEMORY_GROWTH=1
   -s MAXIMUM_MEMORY=4gb
